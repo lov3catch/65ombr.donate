@@ -380,6 +380,115 @@ h1 {
 }
 
 @media (max-width: 560px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .donation-page {
+    width: calc(100% - 24px);
+    padding: 18px 0 32px;
+  }
+
+  .back-link {
+    display: inline-flex;
+    min-height: 44px;
+    margin-bottom: 12px;
+    align-items: center;
+  }
+
+  .donation-card {
+    padding: 22px 16px;
+    box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.28);
+  }
+
+  h1 {
+    font-size: clamp(32px, 12vw, 48px);
+    overflow-wrap: anywhere;
+  }
+
+  .donation-heading > p:last-child {
+    margin-top: 14px;
+    font-size: 14px;
+  }
+
+  .amount-panel {
+    margin-top: 24px;
+    padding: 17px 15px;
+  }
+
+  #donationAmount {
+    font-size: clamp(40px, 15vw, 58px);
+  }
+
+  .mono-widget,
+  .mono-placeholder {
+    min-height: 0;
+  }
+
+  .mono-placeholder {
+    padding: 20px 16px;
+  }
+
+  .demo-badge {
+    position: static;
+    width: max-content;
+    margin-bottom: 14px;
+  }
+
+  .mono-header {
+    padding-right: 0;
+    flex-wrap: wrap;
+  }
+
+  .mono-wordmark {
+    font-size: 27px;
+  }
+
+  .mock-jar-icon {
+    margin-top: 22px;
+  }
+
+  .mono-placeholder h2 {
+    font-size: 17px;
+    line-height: 1.35;
+  }
+
+  .mock-amount {
+    padding: 13px;
+    font-size: 22px;
+  }
+
+  .mock-pay-button,
+  .mono-link,
+  .thanks-link,
+  .thanks-primary-link,
+  .thanks-secondary-link {
+    min-height: 48px;
+  }
+
+  .mono-link {
+    padding-inline: 14px;
+    font-size: 13px;
+  }
+
+  .post-donation-actions {
+    margin-top: 24px;
+  }
+
+  .thanks-emblem {
+    width: min(58vw, 190px);
+  }
+
+  .thanks-copy {
+    font-size: 15px;
+  }
+
+  .thanks-actions {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 560px) {
   .thanks-actions {
     grid-template-columns: 1fr;
   }
