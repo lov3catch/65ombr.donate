@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="assets/brigade_logo-site-style.png" type="image/png" />
+    <meta name="robots" content="noindex,follow" />
+    <meta
+      name="description"
+      content="Сторінка підтримки краудфандингового збору через Банку monobank"
+    />
+    <title>Підтримати збір</title>
+    <link rel="stylesheet" href="donation.css" />
+  </head>
+  <body>
+    <main class="donation-page">
+      <a class="back-link" href="index.html#selector">← Змінити вибір деталей</a>
+
+      <section class="donation-card" aria-labelledby="donation-title">
+        <header class="donation-heading">
+          <p class="eyebrow"><span aria-hidden="true">◆</span> Крок 02 / Донат</p>
+          <h1 id="donation-title">Підтримати збір</h1>
+          <p>
+            Обрана сума буде передана до офіційного платіжного віджета Банки.
+          </p>
+        </header>
+
+        <div class="amount-panel">
+          <span>Сума донату</span>
+          <output id="donationAmount">0 ₴</output>
+          <small id="partsCount"></small>
+        </div>
+
+        <p class="limit-warning" id="limitWarning" hidden></p>
+
+        <div class="mono-widget" id="monoWidget" aria-live="polite">
+          <div class="mono-placeholder" id="monoPlaceholder">
+            <div class="demo-badge">Демо-заглушка</div>
+            <div class="mono-header">
+              <span class="mono-wordmark" aria-hidden="true">mono</span>
+              <span>Банка</span>
+            </div>
+            <div class="mock-jar-icon" aria-hidden="true">
+              <span>₴</span>
+            </div>
+            <h2>Збір на комплектуючі важкого дрона</h2>
+            <label class="mock-amount-label" for="mockAmount">Сума поповнення</label>
+            <output class="mock-amount" id="mockAmount">0 ₴</output>
+            <button class="mock-pay-button" type="button" disabled>
+              Поповнити Банку
+            </button>
+            <p class="mock-disclaimer">
+              Це візуальна заглушка. Кошти не списуються, платіж не створюється.
+            </p>
+          </div>
+        </div>
+
+        <a
+          class="mono-link"
+          id="monoJarLink"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          hidden
+        >
+          Відкрити Банку в monobank
+        </a>
+
+        <div class="post-donation-actions" aria-labelledby="post-donation-title">
+          <p id="post-donation-title">Вже підтримали збір у Банці?</p>
+          <a class="thanks-link" href="thanks.html">
+            Я підтримав збір <span aria-hidden="true">→</span>
+          </a>
+          <small>Перехід не підтверджує оплату — сайт не отримує дані про платіж.</small>
+        </div>
+      </section>
+    </main>
+
+    <script src="monobank-config.js"></script>
+    <script src="donation.js"></script>
+  </body>
+</html>
