@@ -375,7 +375,16 @@ The current footer includes:
 
 Do not publish home addresses, identity documents, or unnecessary personal data. Verify changed external links before publication.
 
-The site does not collect names, phone numbers, email addresses, or payment details. Google Analytics 4 is configured on `index.html`, `donation.html`, and `thanks.html` with measurement ID `G-K4XE649B7B`. Keep that ID consistent across all pages. No custom event taxonomy, Consent Mode implementation, or cookie banner currently exists. Before expanding analytics or adding forms or other data collection, evaluate the applicable consent and privacy requirements.
+The site does not collect names, phone numbers, email addresses, or payment details. Google Analytics 4 is configured on `index.html`, `donation.html`, and `thanks.html` with measurement ID `G-K4XE649B7B`. Keep that ID consistent across all pages.
+
+The custom GA4 event `monobank_click` is sent for direct transitions to the official monobank Jar:
+
+- `app.js` tracks the direct Jar link in the footer with `click_source: "footer_jar_link"`;
+- `donation.js` tracks the Jar link on the donation page with `click_source: "donation_page"`, `selected_amount`, and `selected_parts`;
+- the event is configured as a key event in GA4;
+- this event measures a click only. It must never be described as a completed or verified payment.
+
+No Consent Mode implementation or cookie banner currently exists. Before expanding analytics or adding forms or other data collection, evaluate the applicable consent and privacy requirements.
 
 Do not add reports, receipts, report navigation, or promises of future reporting.
 
@@ -427,7 +436,8 @@ After editing:
 8. Test keyboard navigation, focus visibility, reduced motion, and mobile layout.
 9. Confirm that video has no `autoplay`, `poster`, or YouTube dependency.
 10. Confirm that all three HTML pages contain one GA4 loader and one `gtag('config', 'G-K4XE649B7B')` call.
-11. If deployed, verify the live workflow and public site.
+11. Confirm that each direct Jar link sends exactly one `monobank_click` event and that the event is not presented as payment confirmation.
+12. If deployed, verify the live workflow and public site.
 
 ## 19. Minimum local verification
 
@@ -453,7 +463,7 @@ Do not consider browser verification complete merely because files parse success
 - canonical, `og:url`, `og:image`, sitemap, and crawler-directive work requires confirmation of the final public URL;
 - no named organizer contact exists beyond the brigade's official social links; do not invent one;
 - the interface does not display the date of the latest progress update;
-- there is no backend, automatic Jar synchronization, custom analytics event model, Consent Mode implementation, or payment confirmation;
+- there is no backend, automatic Jar synchronization, broader custom analytics event taxonomy beyond `monobank_click`, Consent Mode implementation, or payment confirmation;
 - large media may be optimized further only if visual quality is preserved and references remain valid.
 
 ## 21. Definition of done

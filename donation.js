@@ -52,6 +52,17 @@ const jarUrl = parseOfficialMonoUrl(config.jarUrl);
 if (jarUrl) {
   jarLink.href = jarUrl.href;
   jarLink.hidden = false;
+  jarLink.addEventListener("click", () => {
+    if (typeof window.gtag !== "function") return;
+
+    window.gtag("event", "monobank_click", {
+      link_url: jarUrl.href,
+      link_text: jarLink.textContent.trim(),
+      click_source: "donation_page",
+      selected_amount: amount,
+      selected_parts: parts,
+    });
+  });
 }
 
 const widgetTemplate = String(config.widgetUrlTemplate ?? "").trim();
