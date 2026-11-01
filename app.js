@@ -212,6 +212,18 @@ supportButton.addEventListener("click", (event) => {
   if (currentDonationTotal <= 0) event.preventDefault();
 });
 
+document.querySelectorAll('a[href*="send.monobank.ua"]').forEach((link) => {
+  link.addEventListener("click", () => {
+    if (typeof window.gtag !== "function") return;
+
+    window.gtag("event", "monobank_click", {
+      link_url: link.href,
+      link_text: link.textContent.trim(),
+      click_source: "footer_jar_link",
+    });
+  });
+});
+
 viewport.addEventListener("keydown", (event) => {
   if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
 
