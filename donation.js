@@ -50,6 +50,12 @@ const config = window.MONOBANK_CONFIG ?? {};
 const jarUrl = parseOfficialMonoUrl(config.jarUrl);
 
 if (jarUrl) {
+  if (amount > 0) {
+    jarUrl.searchParams.set("amount", String(amount));
+  } else {
+    jarUrl.searchParams.delete("amount");
+  }
+
   jarLink.href = jarUrl.href;
   jarLink.hidden = false;
   jarLink.addEventListener("click", () => {
