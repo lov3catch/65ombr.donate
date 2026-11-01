@@ -375,7 +375,7 @@ The current footer includes:
 
 Do not publish home addresses, identity documents, or unnecessary personal data. Verify changed external links before publication.
 
-The site currently does not collect names, phone numbers, email addresses, cookies, or analytics data. It therefore does not need a newsletter form or a decorative privacy page. If analytics, forms, or other data collection are introduced, evaluate consent and privacy requirements before implementation.
+The site does not collect names, phone numbers, email addresses, or payment details. Google Analytics 4 is configured on `index.html`, `donation.html`, and `thanks.html` with measurement ID `G-K4XE649B7B`. Keep that ID consistent across all pages. No custom event taxonomy, Consent Mode implementation, or cookie banner currently exists. Before expanding analytics or adding forms or other data collection, evaluate the applicable consent and privacy requirements.
 
 Do not add reports, receipts, report navigation, or promises of future reporting.
 
@@ -426,7 +426,8 @@ After editing:
 7. Verify the complete-kit 31,978 UAH warning.
 8. Test keyboard navigation, focus visibility, reduced motion, and mobile layout.
 9. Confirm that video has no `autoplay`, `poster`, or YouTube dependency.
-10. If deployed, verify the live workflow and public site.
+10. Confirm that all three HTML pages contain one GA4 loader and one `gtag('config', 'G-K4XE649B7B')` call.
+11. If deployed, verify the live workflow and public site.
 
 ## 19. Minimum local verification
 
@@ -452,7 +453,7 @@ Do not consider browser verification complete merely because files parse success
 - canonical, `og:url`, `og:image`, sitemap, and crawler-directive work requires confirmation of the final public URL;
 - no named organizer contact exists beyond the brigade's official social links; do not invent one;
 - the interface does not display the date of the latest progress update;
-- there is no backend, automatic Jar synchronization, analytics, or payment confirmation;
+- there is no backend, automatic Jar synchronization, custom analytics event model, Consent Mode implementation, or payment confirmation;
 - large media may be optimized further only if visual quality is preserved and references remain valid.
 
 ## 21. Definition of done
