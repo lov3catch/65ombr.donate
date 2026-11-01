@@ -191,6 +191,7 @@ Configuration lives in `monobank-config.js`.
 Current integration state:
 
 - the direct official HTTPS Jar link is validated and displayed;
+- the selected positive donation amount is appended to the Jar URL as the `amount` query parameter;
 - only `monobank.ua` and its subdomains are accepted by URL validation;
 - `widgetUrlTemplate` is empty;
 - when no official widget template exists, the demo iframe area is hidden and the Jar link remains available;
@@ -199,15 +200,9 @@ Current integration state:
 - automatic payment splitting is not implemented;
 - the site does not verify payment status.
 
-Testing previously showed that a Jar URL can accept `?amount=1234` and display a prefilled read-only amount. The current code does **not** append the selected amount to `jarUrl`. Treat amount prefill as researched but not implemented.
+Testing showed that a Jar URL can accept `?amount=1234` and display a prefilled read-only amount. `donation.js` appends the validated, positive selected amount to `jarUrl`. Invalid or zero amounts are not passed to monobank.
 
-Do not mark prefill as complete until all of the following are done:
-
-1. `donation.js` is updated;
-2. zero, ordinary, maximum, and complete-kit amounts are tested;
-3. the real monobank form behavior is reverified;
-4. the site is redeployed;
-5. the published flow is tested.
+After any payment-handoff change, test zero, ordinary, maximum, and complete-kit amounts, redeploy the site, and verify the published flow against the real monobank form.
 
 Because external payment behavior can change, verify current monobank behavior and official documentation before modifying the integration.
 
@@ -458,7 +453,6 @@ Do not consider browser verification complete merely because files parse success
 
 ## 20. Known unfinished work
 
-- monobank amount prefill through `?amount=` is researched but not implemented;
 - an official monobank iframe is not configured and `widgetUrlTemplate` is empty;
 - canonical, `og:url`, `og:image`, sitemap, and crawler-directive work requires confirmation of the final public URL;
 - no named organizer contact exists beyond the brigade's official social links; do not invent one;
