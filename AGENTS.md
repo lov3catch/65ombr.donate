@@ -1,177 +1,166 @@
-# AGENTS.md — проект «Важлива деталь»
+# AGENTS.md — “Important Detail” Project Guide
 
-Этот файл — основной контекст для любого агента, который продолжает работу над проектом. Перед изменениями нужно прочитать его целиком, затем проверить затрагиваемые файлы. Если старые заметки, история диалога или черновики противоречат текущему коду и этому файлу, приоритет имеют разделы «Источник истины» и «Неизменяемые факты» ниже.
+This document is the complete working context for any agent continuing this project. Read it in full before making changes. It is intentionally self-contained: do not rely on files, notes, drafts, or generated artifacts outside this repository.
 
-## 1. Суть проекта
+## 1. Project purpose
 
-«Важлива деталь» — украинский статический краудфандинговый лендинг для благотворительного сбора в пользу 65 окремої механізованої бригади «Великий Луг».
+“Важлива деталь” (“Important Detail”) is a Ukrainian-language static crowdfunding landing page supporting the 65th Separate Mechanized Brigade “Velykyi Luh”.
 
-Текущая конкретная цель сбора:
+The current campaign goal is to:
 
-- собрать **31 978 ₴**;
-- профинансировать **один комплект из 17 позиций** для тяжелого дрона;
-- комплект включает бортовую электронику, питание, сетевое оборудование, кабели, Starlink Mini и тариф Starlink Local Priority 200 ГБ на первый месяц;
-- пользователь не просто вводит абстрактную сумму, а выбирает одну или несколько понятных «деталей», стоимость которых формирует сумму поддержки;
-- финальный переход ведет на официальную Банку monobank.
+- raise **31,978 UAH**;
+- fund **one 17-item equipment kit** for a heavy drone;
+- cover onboard computing, power, networking, cabling, Starlink Mini, and one month of Starlink Local Priority 200 GB;
+- let a supporter choose one or more understandable “parts” instead of inventing an abstract donation amount;
+- hand the supporter off to the official monobank Jar.
 
-Главная идея: даже небольшой отдельный компонент является важной частью общего результата. Основной слоган — **«Кожна деталь має значення»**.
+The central idea is that every small component contributes to the complete result. The primary slogan is **“Кожна деталь має значення”** (“Every detail matters”).
 
-Это не интернет-магазин и не платежный сервис. Детали — понятная метафора и способ сформировать сумму доната. Сайт не резервирует товары, не подтверждает оплату, не получает платежные данные и не должен создавать ложного впечатления обратного.
+This is not an online store and not a payment processor. Selecting a part is a donation metaphor and an amount-building mechanism. The site does not reserve goods, confirm payments, receive payment details, or prove that a payment occurred.
 
-## 2. Неизменяемые факты и прямые требования
+## 2. Non-negotiable requirements
 
-Без прямого запроса пользователя нельзя:
+Do not make any of the following changes without an explicit user request:
 
-- менять список из 17 позиций, их названия, количество или цены;
-- менять итоговую стоимость 31 978 ₴;
-- менять получателя/контекст сбора — 65 ОМБр «Великий Луг»;
-- заменять украинский язык лендинга другим языком;
-- добавлять выдуманные характеристики, боевые показатели, статистику, партнеров, отзывы, гарантии или юридические формулировки;
-- добавлять отчеты, чеки, страницы отчетности или ссылки на них: пользователь отдельно уточнил, что отчетов не будет;
-- добавлять пустые ссылки, фиктивные контакты, формы подписки или сбор персональных данных;
-- заявлять, что платеж совершен, только потому, что человек перешел по ссылке или открыл страницу благодарности;
-- называть неподтвержденную или только исследованную функцию реализованной.
+- change the 17-item list, item names, quantities, or prices;
+- change the total campaign goal of 31,978 UAH;
+- change the beneficiary or campaign context: the 65th Separate Mechanized Brigade “Velykyi Luh”;
+- change the landing page language from Ukrainian;
+- add invented specifications, combat results, statistics, partners, testimonials, guarantees, or legal claims;
+- add reports, receipts, report pages, or links to them; the user explicitly decided that reports will not be published;
+- add empty links, fictional contacts, newsletter forms, or unnecessary personal-data collection;
+- imply that opening the Jar or the thank-you page confirms payment;
+- describe a researched or proposed external feature as implemented.
 
-Все новые тексты интерфейса должны быть на естественном украинском языке. Технические рабочие документы могут быть на русском, но пользовательская поверхность — только украинская.
+All user-facing copy must be natural Ukrainian. Technical documentation and code comments may be English, but the visible interface must remain Ukrainian.
 
-Все новые сгенерированные изображения и их исходники сохранять в корневой папке `assets/`. В `deploy/assets/` и `dist/assets/` копировать только оптимизированные финальные файлы, действительно необходимые соответствующей версии сайта. Не оставлять важные артефакты только во временных каталогах.
+Save every newly generated image and any source/intermediate version that must be retained under `assets/`. Production pages must reference only final, optimized assets. Do not leave important project assets only in temporary directories.
 
-## 3. Источник истины и структура проекта
+## 3. Repository structure and source of truth
 
-### Production-источник
+This repository is the complete production source. Its primary files are:
 
-Главная редактируемая версия сайта — `deploy/`:
+- `AGENTS.md` — project requirements, decisions, constraints, and handoff context;
+- `index.html` — the main campaign landing page;
+- `styles.css` — the main visual system, animations, and responsive behavior;
+- `app.js` — item data, selector logic, campaign progress rendering, and donation handoff;
+- `donation.html`, `donation.css`, `donation.js` — the donation handoff page;
+- `thanks.html` — the thank-you page;
+- `monobank-config.js` — the monobank Jar URL and optional official iframe template;
+- `campaign-progress.js` — local fallback campaign values;
+- `assets/` — all production images, sprites, and video;
+- `.github/workflows/deploy-pages.yml` — GitHub Pages deployment workflow;
+- `.nojekyll` — disables Jekyll processing for the static site.
 
-- `deploy/index.html` — основной лендинг;
-- `deploy/styles.css` — главная визуальная система и адаптивность;
-- `deploy/app.js` — список деталей, селектор, прогресс сбора и переход на донат;
-- `deploy/donation.html`, `deploy/donation.css`, `deploy/donation.js` — промежуточная страница доната;
-- `deploy/thanks.html` — страница благодарности;
-- `deploy/monobank-config.js` — ссылка на Банку и опциональный URL официального iframe;
-- `deploy/campaign-progress.js` — локальные fallback-значения прогресса;
-- `deploy/assets/` — самодостаточный набор production-ассетов;
-- `deploy/.github/workflows/deploy-pages.yml` — публикация через GitHub Pages.
+Edit these files directly. Do not introduce a second generated copy of the site or an undocumented mirror. When a rule or value changes, update every affected runtime location in the same change.
 
-Сначала править `deploy/`, затем синхронизировать зеркала, если задача требует поддерживать их актуальными.
+### Historical values that must not return
 
-### Зеркало для локального просмотра
+An older project state used 18 components and a 46,550 UAH goal. Those values are obsolete. The current state is **17 items and 31,978 UAH**. Do not restore the old values from history, cached context, or previous conversations.
 
-`dist/` повторяет production-файлы. Сейчас JS, CSS и вспомогательные HTML-файлы в `deploy/` и `dist/` идентичны. У `index.html` есть одно намеренное отличие:
+An older content plan also proposed reports and receipts. That proposal was explicitly cancelled. Do not implement it.
 
-- `deploy/index.html` использует `assets/video.mp4`;
-- `dist/index.html` использует `../assets/video.mp4`.
+## 4. Canonical item list
 
-Не затирать это различие слепым копированием.
+The canonical runtime data is the `componentData` array in `app.js`. The list below is duplicated here so that this document remains a complete human-readable source of project context.
 
-### Корневые материалы
+1. Raspberry Pi 4 2GB Model B+ — 4,050 UAH
+2. R2D2 license — 1,000 UAH
+3. TP-LINK TL-SG105 switch — 800 UAH
+4. Adjustable DC converter 60–36 V — 500 UAH
+5. 60×60 fan — 200 UAH
+6. Matek BEC12S-PRO voltage regulator — 950 UAH
+7. Low ESR capacitors, 2 pcs. — 400 UAH total
+8. JST GX1.25 6-pin cable, 2 pcs. — 60 UAH total
+9. Raspberry Pi TX30 power cable — 30 UAH
+10. Switch TX30 power cable — 30 UAH
+11. Camera JST GX1.25 5-pin to RJ-45 cable — 70 UAH
+12. RJ-45 to RJ-45 cable, switch to Raspberry Pi — 60 UAH
+13. RJ-45 to RJ-45 cable, switch to Starlink — 90 UAH
+14. IN DC TX30 power cable — 30 UAH
+15. Consumables — 500 UAH
+16. Starlink Mini — 19,999 UAH
+17. Starlink Local Priority 200 GB, one month — 3,209 UAH
 
-- `детали.txt` — первичный человеческий список текущих 17 позиций и суммы 31 978 ₴;
-- `инструкции.txt` — короткие жесткие требования: не менять список, хранить изображения в `assets/`, язык лендинга — украинский;
-- `флоу.txt` — исходная логика выбора деталей;
-- `Блоки/` — спецификации отдельных блоков;
-- `assets/` — оригиналы, финальные изображения, исходные генерации, палитры, prompts и видео;
-- `assets/source/` — генерационные исходники и промежуточные варианты; не использовать их напрямую в production без подготовки;
-- `seo-audit-zbir-na-vazhkyi-dron-65-ombr.md` — аудит уже внедренных SEO-решений и оставшихся задач;
-- `seo-preview-desktop.png` — контрольный снимок, а не автоматически актуальный эталон;
-- корневой `detail_selector.html` — устаревший прототип. Он не является production-источником и содержит старую структуру заголовков/текста;
-- `стилистика.txt`, `легенда.txt`, `команда.txt` сейчас пусты и не являются источниками требований.
+Validation total: **31,978 UAH**.
 
-### Важный исторический конфликт
+The runtime array is sorted by price before rendering, so the visual order is different from the human-readable order above.
 
-В старой версии проекта было 18 компонентов и цель 46 550 ₴. Эти цифры больше не актуальны. Текущее состояние — **17 позиций и 31 978 ₴**. Не возвращать старые значения из памяти, старых диалогов или старых страниц.
+If the user explicitly authorizes an item-list change, update at least:
 
-Файл `Блоки/список.txt` также содержит старую рекомендацию добавить отчеты и чеки. Эта часть отменена последующим прямым решением пользователя. Не реализовывать ее.
+- `componentData` and corresponding asset names in `app.js`;
+- the slider maximum, static counters, and visible item-count copy in `index.html`;
+- the allowed `parts` range in `donation.js`;
+- the total and item count in visible copy, meta tags, Open Graph copy, FAQ JSON-LD, ARIA labels, and this document;
+- the corresponding files under `assets/`.
 
-## 4. Точный список деталей
+Do not update only one displayed number. The JavaScript goal is calculated from the item list, while several static fallbacks must remain synchronized.
 
-Канонические данные находятся одновременно в `детали.txt` и массиве `componentData` в `deploy/app.js`. В коде массив сортируется по цене, поэтому визуальный порядок отличается от исходного порядка списка.
+## 5. Intended user journey
 
-Текущие позиции и полная стоимость:
+The primary flow is:
 
-1. Raspberry Pi 4 2GB Model B+ — 4 050 ₴
-2. Ліцензія R2D2 — 1 000 ₴
-3. Комутатор TP-LINK TL-SG105 — 800 ₴
-4. Регульований DC-перетворювач 60–36 В — 500 ₴
-5. Вентилятор 60×60 — 200 ₴
-6. Регулятор напруги Matek BEC12S-PRO — 950 ₴
-7. Конденсатори Low ESR, 2 шт. — 400 ₴
-8. Кабель JST GX1.25 6-pin, 2 шт. — 60 ₴
-9. Кабель живлення Raspberry Pi TX30 — 30 ₴
-10. Кабель живлення комутатора TX30 — 30 ₴
-11. Кабель від камери JST GX1.25 5-pin — RJ-45 — 70 ₴
-12. Кабель RJ-45 — RJ-45: комутатор — Raspberry Pi — 60 ₴
-13. Кабель RJ-45 — RJ-45: комутатор — Starlink — 90 ₴
-14. Кабель живлення IN DC TX30 — 30 ₴
-15. Витратні матеріали — 500 ₴
-16. Starlink Mini — 19 999 ₴
-17. Starlink Local Priority 200 ГБ, 1 місяць — 3 209 ₴
+1. The visitor sees the campaign name, beneficiary, goal, current progress, and number of completed drones.
+2. The visitor reads a compact explanation and may watch the local video.
+3. The visitor moves to the central item selector.
+4. The visitor selects items manually or with the range slider.
+5. The interface displays the selected count, status, and calculated donation amount.
+6. The visitor selects “Підтримати збір” and opens `donation.html` with `amount` and `parts` query parameters.
+7. The visitor follows the direct link to the official monobank Jar or uses a future official iframe if one is properly configured.
+8. The visitor may manually open `thanks.html`, but that page does not confirm a payment.
 
-Проверочная сумма: **31 978 ₴**.
+The conversion principle is to remove the burden of inventing an amount. A person chooses a concrete contribution, and the interface calculates the amount automatically.
 
-Если пользователь явно разрешит изменить список, обновить как минимум:
+## 6. Main page architecture
 
-- `детали.txt`;
-- `componentData` и связанные ассеты в `deploy/app.js` и `dist/app.js`;
-- `max`, стартовые значения, счетчики и тексты `1 / 17` в обеих версиях `index.html`;
-- допустимый диапазон `parts` в `donation.js` (сейчас `1..17`);
-- общую сумму и количество позиций во всех видимых текстах, meta/OG, FAQ JSON-LD и ARIA;
-- изображения в корневом `assets/`, `deploy/assets/` и нужном зеркале `dist/assets/`;
-- этот файл.
+The order of sections in `index.html` is intentional:
 
-Не править только одну цифру: цель вычисляется в JS из списка, но статические fallback-тексты тоже должны совпадать.
+1. **Campaign header** — “Важлива деталь” brand, raised/goal amount, progress percentage, and completed-drone count.
+2. **65th Brigade hero** — brigade emblem, one primary H1, concise campaign explanation, selector CTA, and information CTA.
+3. **About the campaign** — Ukrainian Q&A accordion on the left and local video on the right. The first answer is open by default; opening another answer closes the previous one.
+4. **Choose parts** — the central interactive selector.
+5. **Pixel battle scene** — a decorative narrative transition between the selector and final CTA.
+6. **Footer** — slogan, repeated synchronized progress, CTA, internal navigation, monobank Jar, and verified social links.
 
-## 5. Пользовательский путь
+Do not add a second long item list outside the selector. Do not overload the hero with technical specifications.
 
-Основной сценарий:
+### Required Q&A topics
 
-1. Пользователь видит название сбора, получателя, цель и текущий прогресс.
-2. Читает компактное объяснение сбора и при желании смотрит локальное видео.
-3. Переходит к центральному интерактивному блоку деталей.
-4. Выбирает позиции вручную или ползунком.
-5. Видит сумму, количество и текстовый статус.
-6. Нажимает «Підтримати збір» и попадает на `donation.html` с query-параметрами `amount` и `parts`.
-7. Переходит по прямой ссылке на официальную Банку monobank или, если когда-либо будет настроен официальный iframe, использует его.
-8. Может вручную открыть `thanks.html`, но эта страница не подтверждает платеж.
+The campaign explanation must continue to answer these five questions in Ukrainian:
 
-Главная конверсионная идея: не заставлять человека придумывать сумму. Он выбирает конкретный понятный вклад, а интерфейс считает сумму автоматически.
+- “Хто ми?”
+- “На що збираємо?”
+- “Для чого це потрібно?”
+- “Як долучитися?”
+- “Чому «Важлива деталь»?”
 
-## 6. Архитектура основной страницы
+The answers must stay concise, factual, and consistent with the visible campaign goal and item list.
 
-Порядок блоков в `deploy/index.html` важен:
+## 7. Item-selector behavior
 
-1. **Шапка кампании** — бренд «Важлива деталь», прогресс «зібрано / мета», процент и число собранных дронов.
-2. **Hero 65 ОМБр** — эмблема, один главный H1, краткое объяснение, CTA к селектору и к разделу о сборе.
-3. **«Про збір»** — Q&A-аккордеон слева и видео справа. Первый вопрос открыт; открытие нового закрывает остальные.
-4. **«Обери деталі»** — центральный интерактивный блок.
-5. **Пиксельная боевая сцена** — декоративный сюжетный переход между селектором и финальным CTA.
-6. **Подвал** — слоган, повторный прогресс, CTA, навигация, Банка и проверенные социальные ссылки.
+`app.js` contains critical campaign logic.
 
-Не добавлять длинный повторный список комплектующих вне селектора. Не перегружать первый экран техническими характеристиками.
+Required behavior:
 
-## 7. Поведение селектора деталей
+- sort items from the lowest price to the highest price;
+- select one lowest-priced 30 UAH item by default;
+- show six cards per row on desktop;
+- use a horizontally scrollable card strip on mobile;
+- make the slider select the first N lowest-priced items;
+- allow every card to be selected or cleared independently through its check control;
+- after a manual card change, synchronize the slider to the number of selected items, not to a continuous price threshold;
+- calculate the donation amount as the sum of selected items;
+- format amounts with `Intl.NumberFormat("uk-UA")`;
+- prevent donation navigation when zero items are selected and show “Оберіть хоча б одну деталь”;
+- reveal `assets/complete-dron.png` and the complete-kit message when all 17 items are selected;
+- encode `parts` as the current sorted-array indices plus one;
+- keep the support control as a real anchor with a functional fallback URL; JavaScript may update its `href`, but must not replace it with a JavaScript-only button.
 
-`deploy/app.js` — критический файл бизнес-логики.
+Keyboard interaction inside the item viewport uses the Left and Right arrow keys to change the selected count. Preserve `tabindex`, `aria-pressed`, dynamic `aria-label` values, `aria-live`, and visible focus states.
 
-Обязательное поведение:
+## 8. Campaign progress
 
-- данные сортируются от самой дешевой позиции к самой дорогой;
-- по умолчанию выбрана одна самая дешевая позиция на 30 ₴;
-- desktop-сетка — 6 карточек в ряд;
-- на мобильном карточки становятся горизонтальной прокручиваемой лентой;
-- ползунок выбирает первые N самых доступных позиций;
-- каждую карточку можно независимо включить или выключить кнопкой-галочкой;
-- после ручного выбора ползунок синхронизируется с количеством выбранных позиций, а не с непрерывным ценовым диапазоном;
-- сумма — сумма выбранных позиций, форматированная через `Intl.NumberFormat("uk-UA")`;
-- нулевой выбор блокирует переход и показывает «Оберіть хоча б одну деталь»;
-- при выборе всех 17 позиций появляется `assets/complete-dron.png` с сообщением о полном комплекте;
-- query `parts` содержит **индексы текущего отсортированного списка + 1**, а не номера из исходного `детали.txt`;
-- кнопка поддержки должна оставаться настоящей ссылкой с рабочим fallback URL для доступности и индексируемости; JS только обновляет ее `href`.
-
-Клавиатурное управление в viewport стрелками влево/вправо меняет количество выбранных позиций. Не ломать `tabindex`, `aria-pressed`, динамические `aria-label`, `aria-live` и focus-visible состояния.
-
-## 8. Прогресс кампании
-
-Цель вычисляется в `app.js` как сумма `componentData`. Текущие собранные средства и количество собранных дронов приходят из глобального объекта:
+The campaign goal is calculated in `app.js` from `componentData`. Current raised funds and completed-drone count come from:
 
 ```js
 window.CAMPAIGN_PROGRESS = {
@@ -180,300 +169,299 @@ window.CAMPAIGN_PROGRESS = {
 };
 ```
 
-Локальный fallback хранится в `deploy/campaign-progress.js` и `dist/campaign-progress.js`.
+Local fallback values are stored in `campaign-progress.js`.
 
-На GitHub Pages значения подставляются во время сборки из repository Variables:
+GitHub Pages injects deployment values from repository variables:
 
 - `CAMPAIGN_COLLECTED_AMOUNT`;
 - `CAMPAIGN_COLLECTED_DRONES`.
 
-Оба значения должны быть неотрицательными целыми числами. Браузер не читает ENV динамически: после изменения Variables нужно заново запустить workflow **Deploy GitHub Pages**. Не обещать «живое» обновление без нового деплоя или отдельного backend/API.
+Both values must be non-negative integers. Static GitHub Pages cannot read environment variables dynamically in the browser. After changing repository variables, rerun the **Deploy GitHub Pages** workflow.
 
-Прогресс визуально ограничивается 100%, даже если собрано больше цели. Отображаемая сумма может быть выше цели; ARIA `valuenow` ограничивается целью. Шапка и footer должны показывать одинаковые данные.
+The visual progress bar is capped at 100%, even when the raised amount is higher than the goal. The displayed raised amount may exceed the goal, while ARIA `valuenow` remains capped at the goal. Header and footer values must always match.
 
-## 9. Monobank и страница доната
+## 9. Monobank handoff
 
-Каноническая ссылка на Банку сейчас:
+The canonical Jar URL is:
 
 `https://send.monobank.ua/jar/4BtyfStgP8`
 
-Настройка находится в `deploy/monobank-config.js` и зеркале `dist/monobank-config.js`.
+Configuration lives in `monobank-config.js`.
 
-Текущий статус интеграции:
+Current integration state:
 
-- прямое официальное HTTPS-посилання на домене `monobank.ua` разрешается и показывается;
-- `widgetUrlTemplate` пустой;
-- при пустом template демонстрационный iframe-блок скрывается, остается ссылка на Банку;
-- официальный iframe нельзя выдумывать: URL должен быть реально получен через официальный механизм/invoice monobank;
-- страница валидирует, что URL использует HTTPS и принадлежит `monobank.ua` или его поддомену;
-- `MAX_SINGLE_DONATION = 29999`, поэтому полный комплект 31 978 ₴ вызывает предупреждение о возможной необходимости нескольких платежей;
-- автоматического разбиения на платежи нет;
-- сайт не проверяет факт оплаты.
+- the direct official HTTPS Jar link is validated and displayed;
+- only `monobank.ua` and its subdomains are accepted by URL validation;
+- `widgetUrlTemplate` is empty;
+- when no official widget template exists, the demo iframe area is hidden and the Jar link remains available;
+- an official iframe URL must not be invented; it must come from a real official monobank invoice/widget flow;
+- `MAX_SINGLE_DONATION = 29999`, so the complete 31,978 UAH kit displays a warning that multiple payments may be required;
+- automatic payment splitting is not implemented;
+- the site does not verify payment status.
 
-Исследование показало, что URL Банки принимает `?amount=1234` и показывает предзаполненную read-only сумму. Но в текущем коде выбранная сумма **не добавляется** к `jarUrl`. Это исследованная, но не внедренная возможность. Не писать, что prefill реализован, пока одновременно не выполнены все пункты:
+Testing previously showed that a Jar URL can accept `?amount=1234` and display a prefilled read-only amount. The current code does **not** append the selected amount to `jarUrl`. Treat amount prefill as researched but not implemented.
 
-1. изменен `donation.js`;
-2. проверены нулевая, обычная и полная суммы;
-3. проверена фактическая форма monobank;
-4. синхронизирован `dist/`;
-5. выполнен новый деплой;
-6. проверена опубликованная версия.
+Do not mark prefill as complete until all of the following are done:
 
-Поскольку поведение внешнего платежного сайта может измениться, перед любым новым изменением Monobank нужно заново проверить актуальное поведение и официальную документацию.
+1. `donation.js` is updated;
+2. zero, ordinary, maximum, and complete-kit amounts are tested;
+3. the real monobank form behavior is reverified;
+4. the site is redeployed;
+5. the published flow is tested.
 
-## 10. Контент и голос
+Because external payment behavior can change, verify current monobank behavior and official documentation before modifying the integration.
 
-Тон:
+## 10. Content voice
 
-- прямой, конкретный и уважительный;
-- короткие фразы и ясные CTA;
-- без бюрократизмов и чрезмерной драматизации;
-- без выдуманных обещаний и давления на пользователя;
-- технические детали объяснять через назначение и вклад в комплект;
-- допустим игровой пиксельный образ «зомби» как уже установленная метафора проекта, включая фразу «Більше дронів — менше зомбі»;
-- военные факты и возможности техники не расширять без подтвержденного источника и прямой необходимости.
+The voice must be:
 
-Устоявшиеся формулировки:
+- direct, concrete, and respectful;
+- concise, with clear calls to action;
+- free of bureaucracy and excessive dramatization;
+- free of invented promises or pressure tactics;
+- focused on what each technical item contributes to the complete kit;
+- careful not to expand military claims or capabilities without confirmed facts and a clear need.
 
-- бренд: «Важлива деталь»;
-- подпись: «Благодійний збір · 65 ОМБр»;
-- монограмма: «ВД»;
-- H1: «Збір на важкий дрон для 65 ОМБр»;
-- CTA: «Обрати важливу деталь», «Підтримати збір», «Обрати деталі та підтримати»;
-- слоган: «Кожна деталь має значення».
+The established pixel-art “zombie” metaphor is part of the project and may include the phrase “Більше дронів — менше зомбі”. Keep it playful and clearly separate from factual campaign claims.
 
-Не ставить точки в конце коротких UI-заголовков. Это отдельное ранее внедренное решение.
+Established Ukrainian wording:
 
-## 11. Визуальная система
+- brand: “Важлива деталь”;
+- subtitle: “Благодійний збір · 65 ОМБр”;
+- monogram: “ВД”;
+- H1: “Збір на важкий дрон для 65 ОМБр”;
+- CTAs: “Обрати важливу деталь”, “Підтримати збір”, “Обрати деталі та підтримати”;
+- slogan: “Кожна деталь має значення”.
 
-Образ проекта: **темный тактический интерфейс + индустриальная консоль + отчетливый pixel-art слой**. Это не «милый ретро-сайт» и не стандартный благотворительный шаблон.
+Do not place periods at the end of short UI headings. This is an established design decision.
 
-Основные цвета из `styles.css`:
+## 11. Visual system
 
-- фон `#080a0f`;
-- панели `#11151d` и `#171c25`;
-- основной текст `#f0f2f3`;
-- приглушенный текст `#919caa`;
-- главный янтарный акцент `#ffc247`;
-- глубокая янтарная тень `#8a4b08`;
-- warning `#ff6b51`;
-- зеленый разрешен точечно для индикатора ONLINE.
+The project combines a **dark tactical interface, industrial console styling, and a clear pixel-art layer**. It is not a generic charity template, a soft SaaS dashboard, or a cute retro site.
 
-Характерные приемы:
+Core colors from `styles.css`:
 
-- сетка/сканлайны на фоне;
-- прямые углы, тонкие технические рамки, dashed-линии;
-- жесткие смещенные тени без мягкого «карточного» SaaS-стиля;
-- маленькие uppercase-подписи с увеличенным letter-spacing;
-- янтарный акцент только для приоритетных состояний и CTA;
-- крупные condensed/impact-заголовки через `Arial Black` / `Impact`;
-- моноширинный интерфейс через `Cascadia Mono`, `Segoe UI Mono`, `Consolas`;
-- обычный читаемый текст через `Segoe UI`;
-- pixel-art изображения показывать с `image-rendering: pixelated`/`crisp-edges`;
-- реальные фото и видео не пикселизировать.
+- background: `#080a0f`;
+- panels: `#11151d` and `#171c25`;
+- main text: `#f0f2f3`;
+- muted text: `#919caa`;
+- primary amber accent: `#ffc247`;
+- deep amber shadow: `#8a4b08`;
+- warning: `#ff6b51`;
+- green is reserved for small ONLINE/status indicators.
 
-Не вводить градиентную «неоновую радугу», большие скругления, glassmorphism, стандартные синие CTA или случайные новые цвета. Если нужен новый компонент, сначала переиспользовать существующие токены, рамки, тени, типографику и focus-состояния.
+Characteristic styling:
 
-## 12. Pixel-art сцена и графика
+- grid and scanline background texture;
+- square corners, thin technical borders, and dashed separators;
+- hard offset shadows instead of soft floating-card shadows;
+- small uppercase labels with wide letter spacing;
+- amber reserved for important states and primary CTAs;
+- large condensed headings using `Arial Black` / `Impact`;
+- interface text using `Cascadia Mono`, `Segoe UI Mono`, or `Consolas`;
+- readable body copy using `Segoe UI`;
+- pixel-art images rendered with `image-rendering: pixelated` or `crisp-edges`;
+- real photos and video rendered normally.
 
-Пиксельная сцена — часть характера проекта, а не случайный декор. Она изображает движение тяжелого дрона по темной лесной/дорожной сцене и последовательное поражение групп зомби тыквенными боеприпасами, после чего появляются надгробия. Цикл рассчитан примерно на 9 секунд с разными задержками целей.
+Do not introduce rainbow neon gradients, large rounded corners, glassmorphism, generic blue CTAs, or unrelated colors. New components should reuse existing tokens, borders, shadows, typography, spacing logic, and focus states.
 
-Правила:
+## 12. Pixel-art scene and generated graphics
 
-- декоративным спрайтам оставлять пустой `alt`;
-- смысл сцены передается через `role="img"` и общий `aria-label` секции;
-- не делать отдельные спрайты фокусируемыми;
-- при `prefers-reduced-motion: reduce` анимации и transitions практически отключаются;
-- не заменять существующий пиксельный дрон на SVG без прямого запроса;
-- для состояния полного комплекта использовать `complete-dron.png`;
-- новые растровые ассеты хранить вместе с prompt/raw/cutout/pixel-версиями в `assets/source/`, если они были сгенерированы таким процессом;
-- production-ассеты должны иметь понятные латинские имена, если это новые файлы. Существующие Unicode-файлы не переименовывать и не удалять без необходимости.
+The pixel scene is a deliberate part of the project identity. It shows a heavy drone moving across a dark forest/road scene and sequentially hitting zombie groups with pumpkin-like projectiles. Gravestones appear after each target. The main loop is approximately nine seconds with staggered target delays.
 
-## 13. Видео
+Rules:
 
-Видео должно быть локальным и работать даже без YouTube. YouTube ранее выдавал ошибку 153 при открытии через `file://` из-за отсутствия Referer.
+- decorative sprites must keep empty `alt` attributes;
+- the scene meaning is exposed through the section-level `role="img"` and `aria-label`;
+- individual decorative sprites must not become focusable;
+- `prefers-reduced-motion: reduce` must effectively disable animations and transitions;
+- do not replace the pixel-art drone with SVG without an explicit request;
+- use `assets/complete-dron.png` for the complete-kit state;
+- save all generated image material that must be retained under `assets/`;
+- only final optimized files should be referenced by production HTML or CSS;
+- use clear Latin filenames for new production assets;
+- do not rename or delete existing assets unless the change is necessary and every reference is updated.
 
-Обязательная разметка:
+## 13. Video
+
+The campaign video must remain local. A previous YouTube embed failed with error 153 when opened without an HTTP Referer, so the project deliberately uses native video playback.
+
+Required markup behavior:
 
 ```html
 <video controls preload="metadata" playsinline>
 ```
 
-Запрещено без прямого запроса:
+Do not add any of the following without an explicit request:
 
 - `autoplay`;
-- искусственный `poster`/обложка;
-- автоматический старт со звуком;
-- возврат к YouTube iframe.
+- an artificial `poster` image;
+- automatic playback with sound;
+- a YouTube iframe.
 
-Видео по умолчанию стоит на паузе и использует нативные controls. Текущий production-файл — `deploy/assets/video.mp4` размером около 19,6 МБ; его копия находится в корневом `assets/video.mp4`. В корневом `assets/` также сохранен большой оригинал с точным Unicode-именем — это исходный материал, его не удалять и не переименовывать.
+The video must start paused and use native controls. The current production file is `assets/video.mp4`, approximately 19.6 MB. Its maximum width on wide layouts is 680 px; on mobile it uses the available container width.
 
-Максимальная ширина видео на широком layout — 680 px; на мобильном — доступная ширина контейнера.
+## 14. Responsive behavior and accessibility
 
-## 14. Адаптивность и доступность
+Test at minimum:
 
-Проверять минимум:
-
-- узкий телефон около 320–375 px;
+- narrow phones around 320–375 px;
 - 420–720 px;
-- планшет/малый desktop около 960 px;
-- широкий desktop.
+- tablet/small desktop around 960 px;
+- wide desktop.
 
-Ключевые responsive-решения:
+Key responsive requirements:
 
-- header перестраивает бренд, прогресс и счетчик дронов;
-- hero на мобильном складывается в одну колонку;
-- CTA получают достаточную touch-area;
-- Q&A и видео переходят в одну колонку;
-- 6-колоночная сетка деталей превращается в горизонтальную карусель карточек;
-- footer складывается вертикально;
-- нет горизонтального overflow у body, кроме намеренной прокрутки карточек;
-- mobile-шрифты и суммы не должны обрезаться.
+- header brand, progress, and drone count must reflow cleanly;
+- hero content becomes a single column on mobile;
+- CTAs retain adequate touch targets;
+- Q&A and video become a single column;
+- the six-column item grid becomes a horizontal card strip;
+- footer columns stack vertically;
+- the body must not create horizontal overflow outside the intentional card scroller;
+- large amounts and headings must not clip on small screens.
 
-Сохранять:
+Preserve:
 
-- семантические `header`, `main`, `section`, `footer`, `nav`;
-- один видимый H1;
-- логичный порядок H2;
-- meaningful `alt` для содержательных изображений;
-- пустой `alt` для декора;
-- `aria-labelledby`, `aria-live`, progressbar-атрибуты;
-- видимый `:focus-visible`;
-- клавиатурное управление;
-- reduced-motion режим;
-- нативные controls видео.
+- semantic `header`, `main`, `section`, `footer`, and `nav` elements;
+- exactly one visible H1;
+- a logical H2 hierarchy;
+- meaningful `alt` text for content images;
+- empty `alt` for decorative images;
+- `aria-labelledby`, `aria-live`, and progressbar attributes;
+- visible `:focus-visible` states;
+- keyboard navigation;
+- reduced-motion support;
+- native video controls.
 
 ## 15. SEO
 
-Основной запрос: **«збір на важкий дрон для 65 ОМБр»**.
+The primary search query is **“збір на важкий дрон для 65 ОМБр”**.
 
-Уже внедрено:
+Already implemented:
 
-- запрос стоит в начале title;
-- один H1 соответствует цели страницы;
-- meta description описывает цель, комплект и переход в Банку;
-- Open Graph и Twitter Card имеют украинские title/description;
-- `FAQPage` JSON-LD повторяет пять видимых вопросов;
-- donation/thanks имеют `noindex,follow`;
-- CTA — обычные ссылки, а не только JS-кнопки;
-- изображения имеют размеры, alt и lazy loading там, где уместно.
+- the query appears at the beginning of the title;
+- one H1 clearly describes the campaign;
+- the meta description explains the goal, kit, and monobank action;
+- Open Graph and Twitter metadata use Ukrainian copy;
+- FAQPage JSON-LD mirrors the five visible Q&A items;
+- donation and thank-you pages use `noindex,follow`;
+- primary CTAs are real links rather than JavaScript-only buttons;
+- meaningful images have dimensions, alt text, lazy loading, and asynchronous decoding where appropriate.
 
-Если меняется FAQ, одновременно менять видимый текст и JSON-LD. Schema не должна содержать невидимые обещания или дополнительные факты.
+If visible FAQ content changes, update JSON-LD in the same change. Structured data must never contain hidden claims or facts that are absent from the visible page.
 
-Незавершенные SEO-задачи:
+Remaining SEO tasks:
 
-- подтвердить окончательный публичный URL;
-- добавить абсолютные `canonical`, `og:url`, `og:image`;
-- при необходимости добавить `sitemap.xml` и `robots.txt`;
-- проверить JSON-LD внешним Rich Results Test после публикации;
-- проверить опубликованные пути без 404.
+- reconfirm the final public URL;
+- add absolute `canonical`, `og:url`, and `og:image` values;
+- complete sitemap and crawler-directive work if needed;
+- validate JSON-LD with an external Rich Results Test after publication;
+- test every published asset and page path for 404 responses.
 
-В прошлой проверке сайт был доступен по `https://lov3catch.github.io/65ombr.donate/`, но перед использованием этого адреса в canonical/OG его нужно подтвердить заново.
+The site was previously available at `https://lov3catch.github.io/65ombr.donate/`, but verify that URL before using it in canonical or Open Graph tags.
 
-## 16. Подвал, контакты и приватность
+## 16. Footer, contacts, and privacy
 
-Текущий footer содержит:
+The current footer includes:
 
-- финальный CTA;
-- синхронизированный прогресс;
-- ссылку на Банку;
-- Telegram `https://t.me/ombr65`;
-- Instagram `https://www.instagram.com/65ombr_recruit/`;
-- Facebook `https://www.facebook.com/profile.php?id=61573028283625`;
-- служебную строку проекта.
+- the final campaign CTA;
+- synchronized campaign progress;
+- the monobank Jar link;
+- Telegram: `https://t.me/ombr65`;
+- Instagram: `https://www.instagram.com/65ombr_recruit/`;
+- Facebook: `https://www.facebook.com/profile.php?id=61573028283625`;
+- the project service line.
 
-Не добавлять домашние адреса, документы и лишние персональные данные. Если ссылки или контакты меняются, проверить их до публикации.
+Do not publish home addresses, identity documents, or unnecessary personal data. Verify changed external links before publication.
 
-Сейчас сайт не собирает имена, телефоны, email, cookies и не использует аналитику. Поэтому лишняя форма подписки и формальная privacy page не нужны. Если появится аналитика, форма или другой сбор данных, сначала оценить необходимость consent/privacy и только потом внедрять.
+The site currently does not collect names, phone numbers, email addresses, cookies, or analytics data. It therefore does not need a newsletter form or a decorative privacy page. If analytics, forms, or other data collection are introduced, evaluate consent and privacy requirements before implementation.
 
-## 17. Деплой
+Do not add reports, receipts, report navigation, or promises of future reporting.
 
-Workflow находится в `deploy/.github/workflows/deploy-pages.yml` и ожидает ветку `main` или ручной `workflow_dispatch`.
+## 17. Deployment
 
-Он:
+The GitHub Pages workflow is `.github/workflows/deploy-pages.yml`. It runs on pushes to `main` and through manual `workflow_dispatch`.
 
-1. checkout-ит репозиторий;
-2. валидирует repository Variables прогресса;
-3. копирует статический сайт в `_site`;
-4. генерирует `_site/campaign-progress.js`;
-5. загружает Pages artifact;
-6. публикует GitHub Pages.
+The workflow:
 
-Важно: текущий корневой checkout имеет собственную `.git` и HEAD `master`, а workflow внутри `deploy/` слушает `main`. Не считать автоматически, что корень этого рабочего каталога и опубликованный GitHub Pages-репозиторий — одно и то же. Перед push/deploy проверить реальный remote, ветку и то, где `deploy/` становится корнем публикуемого репозитория.
+1. checks out the repository;
+2. validates campaign repository variables;
+3. copies the static site into the Pages artifact;
+4. generates the runtime campaign-progress configuration in that artifact;
+5. uploads the Pages artifact;
+6. deploys GitHub Pages.
 
-Локальные изменения не равны публикации. Успешная правка файла не означает, что live-сайт обновлен. После деплоя отдельно проверить workflow до terminal success и публичные URL.
+Changing a local file does not publish the live site. After deployment, wait for the workflow to reach a terminal success state and verify the public HTML, CSS, JavaScript, images, video, and donation flow.
 
-## 18. Порядок работы агента
+Use `develop` for proposed changes and open a pull request into `main`. Do not merge a pull request unless the user explicitly asks for a merge.
 
-Перед изменением:
+## 18. Agent workflow
 
-1. Прочитать этот файл.
-2. Определить, затрагивается ли production, зеркало, данные, ассеты, SEO, платежный путь или workflow.
-3. Проверить актуальные `deploy/`-файлы, а не полагаться на старую память.
-4. Не перезаписывать несвязанные пользовательские изменения.
-5. Для внешних сервисов и live-сайта перепроверить текущее состояние.
+Before editing:
 
-Во время изменения:
+1. Read this document completely.
+2. Identify whether the task affects production copy, item data, assets, SEO, accessibility, payment handoff, or deployment.
+3. Inspect the current repository files instead of relying on cached context.
+4. Preserve unrelated user changes.
+5. Reverify live state when the task involves an external service or published site.
 
-1. Править `deploy/` как source of truth.
-2. Сохранять украинский текст и существующую визуальную систему.
-3. Поддерживать progressive enhancement и доступность.
-4. Синхронизировать `dist/`, сохраняя намеренный относительный путь видео.
-5. Если добавлен ассет — сохранить оригинал в `assets/`, оптимизированную копию в нужных deployment-папках.
-6. Не смешивать исследование внешней функции с заявлением о готовой реализации.
+While editing:
 
-После изменения:
+1. Treat this repository as the single source of truth.
+2. Preserve Ukrainian user-facing copy and the established visual system.
+3. Maintain progressive enhancement and accessibility.
+4. Keep all required assets under `assets/`.
+5. Keep repeated values and fallback copy synchronized.
+6. Do not confuse external-service research with a completed implementation.
 
-1. Проверить, что сумма 17 цен остается 31 978 ₴, если список не менялся.
-2. Проверить отсутствие старых `18` / `46 550` в пользовательском контенте.
-3. Проверить, что `deploy` и `dist` синхронизированы, кроме документированных различий.
-4. Проверить все локальные ссылки и asset paths.
-5. Проверить основной сценарий выбора: 0, 1, несколько, все 17.
-6. Проверить ручное снятие/добавление карточек после движения ползунка.
-7. Проверить query `amount` и `parts` на donation page.
-8. Проверить warning для суммы 31 978 ₴.
-9. Проверить клавиатуру, focus и mobile layout.
-10. Проверить отсутствие `autoplay`, `poster` и YouTube.
-11. Если был деплой — проверить live HTML, CSS, JS, видео, Банку и Pages workflow.
+After editing:
 
-## 19. Минимальная локальная проверка
+1. Confirm that the 17 prices still total 31,978 UAH unless the list was explicitly changed.
+2. Search user-facing content for obsolete `18` and `46 550` campaign values.
+3. Check all internal links and asset paths.
+4. Test selector states for zero, one, several, and all 17 items.
+5. Test manual card changes after using the slider.
+6. Verify `amount` and `parts` query parameters on the donation page.
+7. Verify the complete-kit 31,978 UAH warning.
+8. Test keyboard navigation, focus visibility, reduced motion, and mobile layout.
+9. Confirm that video has no `autoplay`, `poster`, or YouTube dependency.
+10. If deployed, verify the live workflow and public site.
 
-Проект не требует сборщика и внешних зависимостей. Для корректных относительных URL предпочтительно открыть его через локальный HTTP-сервер, а не двойным кликом.
+## 19. Minimum local verification
 
-На этой Windows-машине системная команда `python` может указывать на нерабочий WindowsApps alias. Надежный интерпретатор обычно находится здесь:
+The project has no build step or package dependency. Serve the repository root over HTTP instead of relying only on `file://`. For example, when the Python launcher is available:
 
 ```powershell
-C:\Users\lov3catch\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe -m http.server 8000 -d deploy
+py -m http.server 8000
 ```
 
-После запуска проверить:
+Then check:
 
 - `http://localhost:8000/`;
 - `http://localhost:8000/donation.html?amount=30&parts=1`;
 - `http://localhost:8000/donation.html?amount=31978&parts=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17`;
 - `http://localhost:8000/thanks.html`.
 
-Не считать проверку завершенной только по отсутствию синтаксической ошибки: интерактивность и responsive-поведение нужно увидеть в браузере.
+Do not consider browser verification complete merely because files parse successfully. Inspect interaction and responsive layout visually.
 
-## 20. Известные незавершенные вопросы
+## 20. Known unfinished work
 
-- Предзаполнение суммы в Банке через `?amount=` исследовано, но не реализовано.
-- Официальный iframe monobank не настроен; `widgetUrlTemplate` пустой.
-- Canonical, `og:url`, `og:image`, sitemap и robots требуют подтверждения финального live URL.
-- Контакт конкретного организатора отдельно от официальных соцсетей бригады не добавлен; не выдумывать его.
-- Дата последнего обновления прогресса не выводится.
-- Нет backend, автоматической синхронизации Банки, аналитики и подтверждения платежа.
-- Большой исходный MP4 и PNG логотип можно дополнительно оптимизировать только с сохранением качества и оригиналов.
-- `Блоки/список.txt` частично устарел и не должен использоваться как готовый backlog без сверки с этим файлом.
+- monobank amount prefill through `?amount=` is researched but not implemented;
+- an official monobank iframe is not configured and `widgetUrlTemplate` is empty;
+- canonical, `og:url`, `og:image`, sitemap, and crawler-directive work requires confirmation of the final public URL;
+- no named organizer contact exists beyond the brigade's official social links; do not invent one;
+- the interface does not display the date of the latest progress update;
+- there is no backend, automatic Jar synchronization, analytics, or payment confirmation;
+- large media may be optimized further only if visual quality is preserved and references remain valid.
 
-## 21. Критерий готовности любой задачи
+## 21. Definition of done
 
-Работа готова, когда:
+A task is complete only when:
 
-- запрошенное изменение реально выполнено в production-источнике;
-- данные, копирайтинг и визуальная система не разошлись;
-- `dist/` синхронизирован там, где это требуется;
-- не нарушены список деталей, сумма, украинский язык, платежные оговорки и доступность;
-- локальная проверка соответствует риску изменения;
-- для опубликованной функции есть подтверждение live-версии, а не только локальный код;
-- агент четко сообщает, что проверено, что не проверено и что осталось внешней зависимостью.
+- the requested change exists in the actual production source;
+- data, visible copy, metadata, and styling remain consistent;
+- the item list, goal, Ukrainian language, payment disclaimers, and accessibility remain intact unless explicitly changed;
+- verification is proportional to the risk of the change;
+- a published feature is verified on the live site, not only in local code;
+- the agent clearly reports what was verified, what was not verified, and which parts still depend on external systems.
