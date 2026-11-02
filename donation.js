@@ -9,7 +9,7 @@ const selectedParts = [
     (query.get("parts") ?? "")
       .split(",")
       .map((value) => Number.parseInt(value, 10))
-      .filter((value) => Number.isInteger(value) && value >= 1 && value <= 17),
+      .filter((value) => Number.isInteger(value) && value >= 1 && value <= 18),
   ),
 ];
 const parts = selectedParts.length;

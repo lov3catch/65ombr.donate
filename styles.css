@@ -89,12 +89,12 @@ input {
   align-items: center;
   margin: 0 auto;
   padding: clamp(30px, 5vw, 54px) clamp(16px, 4vw, 64px);
-  grid-template-columns: 112px minmax(0, 1fr);
+  grid-template-columns: 200px minmax(0, 1fr);
 }
 
 .brigade-logo {
-  width: 112px;
-  height: 112px;
+  width: 200px;
+  height: 200px;
   flex: 0 0 auto;
   filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.34));
   image-rendering: pixelated;
@@ -2045,8 +2045,8 @@ input {
   }
 
   .brigade-logo {
-    width: 64px;
-    height: 64px;
+    width: 112px;
+    height: 112px;
   }
 
   .campaign-hero-kicker {
@@ -2322,8 +2322,8 @@ input {
   }
 
   .brigade-logo {
-    width: 58px;
-    height: 58px;
+    width: 104px;
+    height: 104px;
   }
 
   .campaign-hero h1 {

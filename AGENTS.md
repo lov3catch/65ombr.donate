@@ -8,13 +8,14 @@ This document is the complete working context for any agent continuing this proj
 
 The current campaign goal is to:
 
-- raise **31,978 UAH**;
-- fund **one 17-item equipment kit** for a heavy drone;
-- cover onboard computing, power, networking, cabling, Starlink Mini, and one month of Starlink Local Priority 200 GB;
+- raise **68,978 UAH**;
+- modernize an existing heavy drone rather than build or purchase a new one;
+- fund **one 18-item modernization kit** for that drone;
+- cover onboard computing, power, networking, cabling, Starlink Mini, one month of Starlink Local Priority 200 GB, and the user-requested “Foobar” shield component;
 - let a supporter choose one or more understandable “parts” instead of inventing an abstract donation amount;
 - hand the supporter off to the official monobank Jar.
 
-The central idea is that every small component contributes to the complete result. The primary slogan is **“Кожна деталь має значення”** (“Every detail matters”).
+The central idea is that the brigade already has the heavy drone and the audience helps provide its internet-connectivity modernization. The primary slogan is **“З нас — дрон. З вас — зв’язок”** (“The drone is on us. The connection is on you”). “Кожна деталь має значення” remains the supporting brand principle.
 
 This is not an online store and not a payment processor. Selecting a part is a donation metaphor and an amount-building mechanism. The site does not reserve goods, confirm payments, receive payment details, or prove that a payment occurred.
 
@@ -22,9 +23,10 @@ This is not an online store and not a payment processor. Selecting a part is a d
 
 Do not make any of the following changes without an explicit user request:
 
-- change the 17-item list, item names, quantities, or prices;
-- change the total campaign goal of 31,978 UAH;
+- change the 18-item list, item names, quantities, or prices;
+- change the total campaign goal of 68,978 UAH;
 - change the beneficiary or campaign context: the 65th Separate Mechanized Brigade “Velykyi Luh”;
+- imply that the fundraiser is building or purchasing the heavy drone from scratch; the drone already exists and the campaign funds its Starlink connectivity modernization;
 - change the landing page language from Ukrainian;
 - add invented specifications, combat results, statistics, partners, testimonials, guarantees, or legal claims;
 - add reports, receipts, report pages, or links to them; the user explicitly decided that reports will not be published;
@@ -56,7 +58,7 @@ Edit these files directly. Do not introduce a second generated copy of the site 
 
 ### Historical values that must not return
 
-An older project state used 18 components and a 46,550 UAH goal. Those values are obsolete. The current state is **17 items and 31,978 UAH**. Do not restore the old values from history, cached context, or previous conversations.
+An older project state used a different 18-component lineup and a 46,550 UAH goal. That lineup and total are obsolete. The current state is **18 items and 68,978 UAH**, including the user-requested “Foobar” shield component priced at 37,000 UAH. Do not restore the old lineup or total from history, cached context, or previous conversations.
 
 An older content plan also proposed reports and receipts. That proposal was explicitly cancelled. Do not implement it.
 
@@ -81,8 +83,9 @@ The canonical runtime data is the `componentData` array in `app.js`. The list be
 15. Consumables — 500 UAH
 16. Starlink Mini — 19,999 UAH
 17. Starlink Local Priority 200 GB, one month — 3,209 UAH
+18. Foobar shield component — 37,000 UAH
 
-Validation total: **31,978 UAH**.
+Validation total: **68,978 UAH**.
 
 The runtime array is sorted by price before rendering, so the visual order is different from the human-readable order above.
 
@@ -100,7 +103,7 @@ Do not update only one displayed number. The JavaScript goal is calculated from 
 
 The primary flow is:
 
-1. The visitor sees the campaign name, beneficiary, goal, current progress, and number of completed drones.
+1. The visitor sees the campaign name, beneficiary, goal, current progress, and number of modernized drones.
 2. The visitor reads a compact explanation and may watch the local video.
 3. The visitor moves to the central item selector.
 4. The visitor selects items manually or with the range slider.
@@ -116,7 +119,7 @@ The conversion principle is to remove the burden of inventing an amount. A perso
 The order of sections in `index.html` is intentional:
 
 1. **Campaign header** — “Важлива деталь” brand, raised/goal amount, progress percentage, and completed-drone count.
-2. **65th Brigade hero** — brigade emblem, one primary H1, concise campaign explanation, selector CTA, and information CTA.
+2. **65th Brigade hero** — brigade emblem, the “З нас — дрон. З вас — зв’язок” H1, a concise explanation that the drone already exists, selector CTA, and information CTA.
 3. **About the campaign** — Ukrainian Q&A accordion on the left and local video on the right. The first answer is open by default; opening another answer closes the previous one.
 4. **Choose parts** — the central interactive selector.
 5. **Pixel battle scene** — a decorative narrative transition between the selector and final CTA.
@@ -152,7 +155,7 @@ Required behavior:
 - calculate the donation amount as the sum of selected items;
 - format amounts with `Intl.NumberFormat("uk-UA")`;
 - prevent donation navigation when zero items are selected and show “Оберіть хоча б одну деталь”;
-- reveal `assets/complete-dron.png` and the complete-kit message when all 17 items are selected;
+- reveal `assets/complete-dron.png` and the complete-kit message when all 18 items are selected;
 - encode `parts` as the current sorted-array indices plus one;
 - keep the support control as a real anchor with a functional fallback URL; JavaScript may update its `href`, but must not replace it with a JavaScript-only button.
 
@@ -196,7 +199,7 @@ Current integration state:
 - `widgetUrlTemplate` is empty;
 - when no official widget template exists, the demo iframe area is hidden and the Jar link remains available;
 - an official iframe URL must not be invented; it must come from a real official monobank invoice/widget flow;
-- `MAX_SINGLE_DONATION = 29999`, so the complete 31,978 UAH kit displays a warning that multiple payments may be required;
+- `MAX_SINGLE_DONATION = 29999`, so the complete 68,978 UAH kit displays a warning that multiple payments may be required;
 - automatic payment splitting is not implemented;
 - the site does not verify payment status.
 
@@ -222,11 +225,12 @@ The established pixel-art “zombie” metaphor is part of the project and may i
 Established Ukrainian wording:
 
 - brand: “Важлива деталь”;
-- subtitle: “Благодійний збір · 65 ОМБр”;
+- subtitle: “Модернізація дрону · 65 ОМБр”;
 - monogram: “ВД”;
-- H1: “Збір на важкий дрон для 65 ОМБр”;
-- CTAs: “Обрати важливу деталь”, “Підтримати збір”, “Обрати деталі та підтримати”;
-- slogan: “Кожна деталь має значення”.
+- H1 and primary slogan: “З нас — дрон. З вас — зв’язок”;
+- supporting explanation: the heavy drone already exists; the campaign funds a 68,978 UAH modernization kit for Starlink integration and internet-based control;
+- CTAs: “Обрати деталь модернізації”, “Підтримати збір”;
+- supporting brand principle: “Кожна деталь має значення”.
 
 Do not place periods at the end of short UI headings. This is an established design decision.
 
@@ -331,7 +335,7 @@ Preserve:
 
 ## 15. SEO
 
-The primary search query is **“збір на важкий дрон для 65 ОМБр”**.
+The primary search query is **“модернізація важкого дрона Starlink для 65 ОМБр”**.
 
 Already implemented:
 
@@ -421,13 +425,13 @@ While editing:
 
 After editing:
 
-1. Confirm that the 17 prices still total 31,978 UAH unless the list was explicitly changed.
+1. Confirm that the 18 prices still total 68,978 UAH unless the list was explicitly changed.
 2. Search user-facing content for obsolete `18` and `46 550` campaign values.
 3. Check all internal links and asset paths.
-4. Test selector states for zero, one, several, and all 17 items.
+4. Test selector states for zero, one, several, and all 18 items.
 5. Test manual card changes after using the slider.
 6. Verify `amount` and `parts` query parameters on the donation page.
-7. Verify the complete-kit 31,978 UAH warning.
+7. Verify the complete-kit 68,978 UAH warning.
 8. Test keyboard navigation, focus visibility, reduced motion, and mobile layout.
 9. Confirm that video has no `autoplay`, `poster`, or YouTube dependency.
 10. Confirm that all three HTML pages contain one GA4 loader and one `gtag('config', 'G-K4XE649B7B')` call.
@@ -446,12 +450,19 @@ Then check:
 
 - `http://localhost:8000/`;
 - `http://localhost:8000/donation.html?amount=30&parts=1`;
-- `http://localhost:8000/donation.html?amount=31978&parts=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17`;
+- `http://localhost:8000/donation.html?amount=68978&parts=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18`;
 - `http://localhost:8000/thanks.html`.
 
 Do not consider browser verification complete merely because files parse successfully. Inspect interaction and responsive layout visually.
 
 ## 20. Known unfinished work
+
+### User-requested product TODO
+
+1. Add an electronic-warfare (EW / Ukrainian “РЕБ”) component priced at **39,875 UAH**. Before implementation, confirm its exact Ukrainian display name, quantity, short factual description, and production asset. If it is added on top of the current 18-item kit, the campaign goal becomes **108,853 UAH**; update every runtime value, fallback, metadata field, structured-data entry, test, and documentation reference together.
+2. Replace `assets/video.mp4` with a different user-supplied local video. Preserve native controls, paused initial playback, `preload="metadata"`, `playsinline`, and the established rule of no autoplay, artificial poster, or YouTube dependency. Verify the replacement on desktop and mobile before deployment.
+
+These are roadmap items, not current production facts. Do not change the canonical item list, the 68,978 UAH goal, or the existing video until the corresponding TODO is explicitly implemented and verified.
 
 - an official monobank iframe is not configured and `widgetUrlTemplate` is empty;
 - canonical, `og:url`, `og:image`, sitemap, and crawler-directive work requires confirmation of the final public URL;
