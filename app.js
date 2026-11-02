@@ -16,6 +16,7 @@ const componentData = [
   { name: "Витратні матеріали", price: 500, image: "part-15-consumables-kit.png" },
   { name: "Starlink Mini", price: 19999, image: "part-16-starlink-mini.png" },
   { name: "Starlink Local Priority 200 ГБ, 1 місяць", price: 3209, image: "part-17-local-priority-200gb.png" },
+  { name: "Zaslip", price: 37000, image: "part-18-zaslip-shield.png" },
 ].sort((first, second) => first.price - second.price);
 
 const track = document.querySelector("#partsTrack");
@@ -108,16 +109,16 @@ completionItem.innerHTML = `
   <img
     class="completion-image"
     src="assets/complete-dron.png"
-    alt="Готовий важкий шестироторний дрон"
+    alt="Важкий шестироторний дрон із комплектом модернізації зв’язку"
     width="256"
     height="256"
     loading="lazy"
     decoding="async"
   />
   <div class="completion-copy">
-    <span class="completion-kicker">Комплект зібрано</span>
-    <strong>Готовий важкий дрон</strong>
-    <p>Усі необхідні деталі профінансовано — апарат готовий до фінального складання.</p>
+    <span class="completion-kicker">Обрано весь комплект</span>
+    <strong>Комплект модернізації</strong>
+    <p>Усі 18 деталей позначено — сума підтримки охоплює весь комплект модернізації.</p>
   </div>
   <span class="completion-check" aria-hidden="true">✓</span>
 `;
@@ -181,7 +182,7 @@ function updateSelection({ syncRange = true } = {}) {
   if (selectedCount === 0) {
     selectionStatus.textContent = "Оберіть хоча б одну деталь";
   } else if (selectedCount === componentData.length) {
-    selectionStatus.textContent = "Ви покриваєте весь комплект — усі деталі позначено";
+    selectionStatus.textContent = "Ви покриваєте весь комплект модернізації — усі деталі позначено";
   } else if (selectedCount === 1) {
     selectionStatus.textContent = `Обрано: ${selectedComponents[0].name}`;
   } else {

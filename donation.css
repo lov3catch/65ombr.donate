@@ -85,6 +85,7 @@ h1 {
   padding: 22px;
   border: 1px dashed var(--line);
   background: linear-gradient(90deg, rgba(255, 194, 71, 0.1), transparent);
+  text-align: center;
 }
 
 .amount-panel > span,
