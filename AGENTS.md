@@ -11,7 +11,7 @@ The current campaign goal is to:
 - raise **68,978 UAH**;
 - modernize an existing heavy drone rather than build or purchase a new one;
 - fund **one 18-item modernization kit** for that drone;
-- cover onboard computing, power, networking, cabling, Starlink Mini, one month of Starlink Local Priority 200 GB, and the user-requested “Foobar” shield component;
+- cover onboard computing, power, networking, cabling, Starlink Mini, one month of Starlink Local Priority 200 GB, and the user-requested “Zaslip” shield component;
 - let a supporter choose one or more understandable “parts” instead of inventing an abstract donation amount;
 - hand the supporter off to the official monobank Jar.
 
@@ -58,7 +58,7 @@ Edit these files directly. Do not introduce a second generated copy of the site 
 
 ### Historical values that must not return
 
-An older project state used a different 18-component lineup and a 46,550 UAH goal. That lineup and total are obsolete. The current state is **18 items and 68,978 UAH**, including the user-requested “Foobar” shield component priced at 37,000 UAH. Do not restore the old lineup or total from history, cached context, or previous conversations.
+An older project state used a different 18-component lineup and a 46,550 UAH goal. That lineup and total are obsolete. The current state is **18 items and 68,978 UAH**, including the user-requested “Zaslip” shield component priced at 37,000 UAH. Do not restore the old lineup or total from history, cached context, or previous conversations.
 
 An older content plan also proposed reports and receipts. That proposal was explicitly cancelled. Do not implement it.
 
@@ -83,7 +83,7 @@ The canonical runtime data is the `componentData` array in `app.js`. The list be
 15. Consumables — 500 UAH
 16. Starlink Mini — 19,999 UAH
 17. Starlink Local Priority 200 GB, one month — 3,209 UAH
-18. Foobar shield component — 37,000 UAH
+18. Zaslip shield component — 37,000 UAH
 
 Validation total: **68,978 UAH**.
 
@@ -229,7 +229,7 @@ Established Ukrainian wording:
 - monogram: “ВД”;
 - H1 and primary slogan: “З нас — дрон. З вас — зв’язок”;
 - supporting explanation: the heavy drone already exists; the campaign funds a 68,978 UAH modernization kit for Starlink integration and internet-based control;
-- CTAs: “Обрати деталь модернізації”, “Підтримати збір”;
+- CTAs: “Обрати деталь”, “Підтримати збір”;
 - supporting brand principle: “Кожна деталь має значення”.
 
 Do not place periods at the end of short UI headings. This is an established design decision.

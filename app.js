@@ -16,7 +16,7 @@ const componentData = [
   { name: "Витратні матеріали", price: 500, image: "part-15-consumables-kit.png" },
   { name: "Starlink Mini", price: 19999, image: "part-16-starlink-mini.png" },
   { name: "Starlink Local Priority 200 ГБ, 1 місяць", price: 3209, image: "part-17-local-priority-200gb.png" },
-  { name: "Фуубар", price: 37000, image: "part-18-foobar-shield.png" },
+  { name: "Zaslip", price: 37000, image: "part-18-zaslip-shield.png" },
 ].sort((first, second) => first.price - second.price);
 
 const track = document.querySelector("#partsTrack");
