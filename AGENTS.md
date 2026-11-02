@@ -11,7 +11,7 @@ The current campaign goal is to:
 - raise **68,978 UAH**;
 - modernize an existing heavy drone rather than build or purchase a new one;
 - fund **one 18-item modernization kit** for that drone;
-- cover onboard computing, power, networking, cabling, Starlink Mini, one month of Starlink Local Priority 200 GB, and the user-requested “Zaslip” shield component;
+- cover onboard computing, power, networking, cabling, Starlink Mini, one month of a Starlink service plan, and the user-requested “Zaslip” shield component;
 - let a supporter choose one or more understandable “parts” instead of inventing an abstract donation amount;
 - hand the supporter off to the official monobank Jar.
 
@@ -66,23 +66,23 @@ An older content plan also proposed reports and receipts. That proposal was expl
 
 The canonical runtime data is the `componentData` array in `app.js`. The list below is duplicated here so that this document remains a complete human-readable source of project context.
 
-1. Raspberry Pi 4 2GB Model B+ — 4,050 UAH
-2. R2D2 license — 1,000 UAH
-3. TP-LINK TL-SG105 switch — 800 UAH
+1. Raspberry Pi 4 — 4,050 UAH
+2. Software — 1,000 UAH
+3. TP-LINK switch — 800 UAH
 4. Adjustable DC converter 60–36 V — 500 UAH
 5. 60×60 fan — 200 UAH
-6. Matek BEC12S-PRO voltage regulator — 950 UAH
+6. Voltage regulator — 950 UAH
 7. Low ESR capacitors, 2 pcs. — 400 UAH total
 8. JST GX1.25 6-pin cable, 2 pcs. — 60 UAH total
 9. Raspberry Pi TX30 power cable — 30 UAH
-10. Switch TX30 power cable — 30 UAH
+10. Switch power cable — 30 UAH
 11. Camera JST GX1.25 5-pin to RJ-45 cable — 70 UAH
 12. RJ-45 to RJ-45 cable, switch to Raspberry Pi — 60 UAH
 13. RJ-45 to RJ-45 cable, switch to Starlink — 90 UAH
 14. IN DC TX30 power cable — 30 UAH
 15. Consumables — 500 UAH
 16. Starlink Mini — 19,999 UAH
-17. Starlink Local Priority 200 GB, one month — 3,209 UAH
+17. Starlink service plan, one month — 3,209 UAH
 18. Zaslip shield component — 37,000 UAH
 
 Validation total: **68,978 UAH**.
