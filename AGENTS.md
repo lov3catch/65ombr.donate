@@ -228,7 +228,7 @@ Established Ukrainian wording:
 - hierarchy line: “Підрозділ SKORN · 65 ОМБр «Великий Луг»”;
 - monogram: “ВД”;
 - H1 and primary slogan: “З нас — дрон. З вас — зв’язок”;
-- supporting explanation: the heavy drone already exists; the next step is Starlink integration so the pilots can control it from a greater and safer distance; the campaign funds the 68,978 UAH modernization kit required for that integration;
+- supporting explanation: the heavy “Vampire” drone already exists in its standard configuration; the next step is Starlink integration so the pilots can control it from a greater and safer distance and maintain a more stable connection that is less dependent on radio horizon and terrain; the campaign funds the 68,978 UAH modernization kit required for that integration;
 - CTAs: “Обрати деталь”, “Підтримати збір”;
 - supporting brand principle: “Кожна деталь має значення”.
 
