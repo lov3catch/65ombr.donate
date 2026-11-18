@@ -1046,32 +1046,6 @@ input {
   font-size: 0.82em;
 }
 
-.block-note {
-  display: flex;
-  gap: 10px;
-  align-items: flex-start;
-  margin-top: 18px;
-  color: #7b8796;
-  font-family: "Segoe UI", sans-serif;
-  font-size: 12px;
-  line-height: 1.5;
-}
-
-.block-note span {
-  display: grid;
-  flex: 0 0 auto;
-  width: 18px;
-  height: 18px;
-  border: 1px solid var(--line-bright);
-  font-family: Georgia, serif;
-  font-size: 12px;
-  place-items: center;
-}
-
-.block-note p {
-  margin: 0;
-}
-
 .pixel-battle {
   position: relative;
   width: 100%;
