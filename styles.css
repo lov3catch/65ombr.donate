@@ -89,16 +89,37 @@ input {
   align-items: center;
   margin: 0 auto;
   padding: clamp(30px, 5vw, 54px) clamp(16px, 4vw, 64px);
-  grid-template-columns: 200px minmax(0, 1fr);
+  grid-template-columns: 347.8px minmax(0, 1fr);
 }
 
-.brigade-logo {
-  width: 200px;
-  height: 200px;
-  flex: 0 0 auto;
+.campaign-emblems {
+  --emblem-size: 248.4px;
+  position: relative;
+  width: 347.8px;
+  height: 272.7px;
+  justify-self: start;
+}
+
+.campaign-emblem {
+  position: absolute;
+  width: var(--emblem-size);
+  height: var(--emblem-size);
   filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.34));
   image-rendering: pixelated;
   object-fit: contain;
+}
+
+.campaign-emblem-brigade {
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.campaign-emblem-unit {
+  top: 0;
+  left: 0;
+  z-index: 2;
+  filter: drop-shadow(0 7px 6px rgba(0, 0, 0, 0.58));
 }
 
 .campaign-hero-copy {
@@ -2044,9 +2065,10 @@ input {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .brigade-logo {
-    width: 112px;
-    height: 112px;
+  .campaign-emblems {
+    --emblem-size: 151.2px;
+    width: 211.7px;
+    height: 170.1px;
   }
 
   .campaign-hero-kicker {
@@ -2321,9 +2343,10 @@ input {
     padding: 20px 14px 26px;
   }
 
-  .brigade-logo {
-    width: 104px;
-    height: 104px;
+  .campaign-emblems {
+    --emblem-size: 140.4px;
+    width: 196.6px;
+    height: 158px;
   }
 
   .campaign-hero h1 {

@@ -4,7 +4,7 @@ This document is the complete working context for any agent continuing this proj
 
 ## 1. Project purpose
 
-“Важлива деталь” (“Important Detail”) is a Ukrainian-language static crowdfunding landing page supporting the 65th Separate Mechanized Brigade “Velykyi Luh”.
+“Важлива деталь” (“Important Detail”) is a Ukrainian-language static crowdfunding landing page supporting the SKORN unit within the 65th Separate Mechanized Brigade “Velykyi Luh”. User-facing copy should identify the beneficiary naturally as “підрозділ SKORN 65 ОМБр” without adding an explanatory sentence about the organizational hierarchy.
 
 The current campaign goal is to:
 
@@ -25,7 +25,7 @@ Do not make any of the following changes without an explicit user request:
 
 - change the 18-item list, item names, quantities, or prices;
 - change the total campaign goal of 68,978 UAH;
-- change the beneficiary or campaign context: the 65th Separate Mechanized Brigade “Velykyi Luh”;
+- change the beneficiary or campaign context: the SKORN unit within the 65th Separate Mechanized Brigade “Velykyi Luh”;
 - imply that the fundraiser is building or purchasing the heavy drone from scratch; the drone already exists and the campaign funds its Starlink connectivity modernization;
 - change the landing page language from Ukrainian;
 - add invented specifications, combat results, statistics, partners, testimonials, guarantees, or legal claims;
@@ -119,7 +119,7 @@ The conversion principle is to remove the burden of inventing an amount. A perso
 The order of sections in `index.html` is intentional:
 
 1. **Campaign header** — “Важлива деталь” brand, raised/goal amount, progress percentage, and completed-drone count.
-2. **65th Brigade hero** — brigade emblem, the “З нас — дрон. З вас — зв’язок” H1, a concise explanation that the drone already exists, selector CTA, and information CTA.
+2. **65th Brigade / SKORN hero** — separate brigade and SKORN unit image files shown at exactly equal CSS dimensions, with the SKORN emblem positioned on the left in front and overlapping about 60% of the brigade emblem on the right; the “З нас — дрон. З вас — зв’язок” H1; concise copy identifying the beneficiary as the SKORN unit of 65 OMBr; an explanation that the drone already exists; selector CTA; and information CTA. Do not merge the brigade and unit identities into one generated raster or add an organizational-hierarchy explanation to visible copy.
 3. **About the campaign** — Ukrainian Q&A accordion on the left and local video on the right. The first answer is open by default; opening another answer closes the previous one.
 4. **Choose parts** — the central interactive selector.
 5. **Pixel battle scene** — a decorative narrative transition between the selector and final CTA.
@@ -225,7 +225,7 @@ The established pixel-art “zombie” metaphor is part of the project and may i
 Established Ukrainian wording:
 
 - brand: “Важлива деталь”;
-- subtitle: “Модернізація дрону · 65 ОМБр”;
+- hierarchy line: “Підрозділ SKORN · 65 ОМБр «Великий Луг»”;
 - monogram: “ВД”;
 - H1 and primary slogan: “З нас — дрон. З вас — зв’язок”;
 - supporting explanation: the heavy drone already exists; the campaign funds a 68,978 UAH modernization kit for Starlink integration and internet-based control;
