@@ -89,16 +89,37 @@ input {
   align-items: center;
   margin: 0 auto;
   padding: clamp(30px, 5vw, 54px) clamp(16px, 4vw, 64px);
-  grid-template-columns: 200px minmax(0, 1fr);
+  grid-template-columns: 347.8px minmax(0, 1fr);
 }
 
-.brigade-logo {
-  width: 200px;
-  height: 200px;
-  flex: 0 0 auto;
+.campaign-emblems {
+  --emblem-size: 248.4px;
+  position: relative;
+  width: 347.8px;
+  height: 272.7px;
+  justify-self: start;
+}
+
+.campaign-emblem {
+  position: absolute;
+  width: var(--emblem-size);
+  height: var(--emblem-size);
   filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.34));
   image-rendering: pixelated;
   object-fit: contain;
+}
+
+.campaign-emblem-brigade {
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.campaign-emblem-unit {
+  top: 0;
+  left: 0;
+  z-index: 2;
+  filter: drop-shadow(0 7px 6px rgba(0, 0, 0, 0.58));
 }
 
 .campaign-hero-copy {
@@ -510,7 +531,31 @@ input {
   justify-content: space-between;
 }
 
-.campaign-hero h1,
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.campaign-hero h1 {
+  max-width: 760px;
+  margin: 0;
+  overflow-wrap: anywhere;
+  color: var(--accent);
+  font-family: "Cascadia Mono", "Segoe UI Mono", Consolas, monospace;
+  font-size: clamp(15px, 1.8vw, 22px);
+  line-height: 1.28;
+  letter-spacing: 0.045em;
+  text-transform: uppercase;
+}
+
+.campaign-hero-slogan,
 .section-heading h2 {
   margin: 0;
   font-family: "Arial Black", Impact, sans-serif;
@@ -518,6 +563,11 @@ input {
   line-height: 0.97;
   letter-spacing: -0.045em;
   text-transform: uppercase;
+}
+
+.campaign-hero-slogan {
+  margin-top: 10px;
+  color: var(--text);
 }
 
 .intro {
@@ -1023,32 +1073,6 @@ input {
 .support-button-amount {
   flex: 0 0 auto;
   font-size: 0.82em;
-}
-
-.block-note {
-  display: flex;
-  gap: 10px;
-  align-items: flex-start;
-  margin-top: 18px;
-  color: #7b8796;
-  font-family: "Segoe UI", sans-serif;
-  font-size: 12px;
-  line-height: 1.5;
-}
-
-.block-note span {
-  display: grid;
-  flex: 0 0 auto;
-  width: 18px;
-  height: 18px;
-  border: 1px solid var(--line-bright);
-  font-family: Georgia, serif;
-  font-size: 12px;
-  place-items: center;
-}
-
-.block-note p {
-  margin: 0;
 }
 
 .pixel-battle {
@@ -2044,9 +2068,10 @@ input {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .brigade-logo {
-    width: 112px;
-    height: 112px;
+  .campaign-emblems {
+    --emblem-size: 151.2px;
+    width: 211.7px;
+    height: 170.1px;
   }
 
   .campaign-hero-kicker {
@@ -2058,9 +2083,22 @@ input {
     white-space: normal;
   }
 
-  .campaign-hero h1 {
+  .campaign-hero-copy {
+    width: calc(100vw - 32px);
+    max-width: 100%;
+  }
+
+  .campaign-hero-slogan {
     overflow-wrap: break-word;
     font-size: clamp(25px, 8vw, 34px);
+  }
+
+  .campaign-hero h1 {
+    width: 100%;
+    max-width: 100%;
+    font-size: 13px;
+    line-height: 1.35;
+    white-space: normal;
   }
 
   .campaign-hero-intro {
@@ -2321,14 +2359,16 @@ input {
     padding: 20px 14px 26px;
   }
 
-  .brigade-logo {
-    width: 104px;
-    height: 104px;
+  .campaign-emblems {
+    --emblem-size: 140.4px;
+    width: 196.6px;
+    height: 158px;
   }
 
-  .campaign-hero h1 {
-    font-size: clamp(28px, 9.2vw, 38px);
-    line-height: 0.94;
+  .campaign-hero-slogan {
+    font-size: clamp(24px, 7.6vw, 31px);
+    line-height: 0.98;
+    letter-spacing: -0.055em;
     overflow-wrap: anywhere;
   }
 
@@ -2562,8 +2602,8 @@ input {
     padding-inline: 12px;
   }
 
-  .campaign-hero h1 {
-    font-size: clamp(27px, 9.4vw, 34px);
+  .campaign-hero-slogan {
+    font-size: clamp(25px, 8.4vw, 30px);
   }
 
   .campaign-hero-actions {
