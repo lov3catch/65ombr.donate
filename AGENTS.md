@@ -15,7 +15,7 @@ The current campaign goal is to:
 - let a supporter choose one or more understandable “parts” instead of inventing an abstract donation amount;
 - hand the supporter off to the official monobank Jar.
 
-The central idea is that the brigade already has the heavy drone and the audience helps provide its internet-connectivity modernization. The primary slogan is **“З нас — дрон. З вас — зв’язок”** (“The drone is on us. The connection is on you”). “Кожна деталь має значення” remains the supporting brand principle.
+The central idea is that the brigade already has the heavy drone and the audience helps provide its modernization. The SEO-facing campaign framing is **“Допомога ЗСУ: збір для підрозділу SKORN 65 ОМБр”**. The primary visual slogan remains **“З нас — дрон. З вас — зв’язок”** (“The drone is on us. The connection is on you”), and “Кожна деталь має значення” remains the supporting brand principle.
 
 This is not an online store and not a payment processor. Selecting a part is a donation metaphor and an amount-building mechanism. The site does not reserve goods, confirm payments, receive payment details, or prove that a payment occurred.
 
@@ -119,7 +119,7 @@ The conversion principle is to remove the burden of inventing an amount. A perso
 The order of sections in `index.html` is intentional:
 
 1. **Campaign header** — “Важлива деталь” brand, raised/goal amount, progress percentage, and completed-drone count.
-2. **65th Brigade / SKORN hero** — separate brigade and SKORN unit image files shown at exactly equal CSS dimensions, with the SKORN emblem positioned on the left in front and overlapping about 60% of the brigade emblem on the right; the “З нас — дрон. З вас — зв’язок” H1; concise copy identifying the beneficiary as the SKORN unit of 65 OMBr; an explanation that the drone already exists; selector CTA; and information CTA. Do not merge the brigade and unit identities into one generated raster or add an organizational-hierarchy explanation to visible copy.
+2. **65th Brigade / SKORN hero** — separate brigade and SKORN unit image files shown at exactly equal CSS dimensions, with the SKORN emblem positioned on the left in front and overlapping about 60% of the brigade emblem on the right; the “Допомога ЗСУ: збір для підрозділу SKORN 65 ОМБр” H1; the “З нас — дрон. З вас — зв’язок” visual slogan; concise copy identifying the beneficiary as the SKORN unit of 65 OMBr; an explanation that the drone already exists; selector CTA; and information CTA. Do not merge the brigade and unit identities into one generated raster or add an organizational-hierarchy explanation to visible copy.
 3. **About the campaign** — Ukrainian Q&A accordion on the left and local video on the right. The first answer is open by default; opening another answer closes the previous one.
 4. **Choose parts** — the central interactive selector.
 5. **Pixel battle scene** — a decorative narrative transition between the selector and final CTA.
@@ -134,7 +134,7 @@ The campaign explanation must continue to answer these five questions in Ukraini
 - “Хто ми?”
 - “На що збираємо?”
 - “Для чого це потрібно?”
-- “Як долучитися?”
+- “Як задонатити на ЗСУ?”
 - “Чому «Важлива деталь»?”
 
 The answers must stay concise, factual, and consistent with the visible campaign goal and item list.
@@ -227,7 +227,8 @@ Established Ukrainian wording:
 - brand: “Важлива деталь”;
 - hierarchy line: “Підрозділ SKORN · 65 ОМБр «Великий Луг»”;
 - monogram: “ВД”;
-- H1 and primary slogan: “З нас — дрон. З вас — зв’язок”;
+- H1: “Допомога ЗСУ: збір для підрозділу SKORN 65 ОМБр”;
+- primary visual slogan: “З нас — дрон. З вас — зв’язок”;
 - supporting explanation: the heavy “Vampire” drone already exists in its standard configuration; the next step is Starlink integration so the pilots can control it from a greater and safer distance and maintain a more stable connection that is less dependent on radio horizon and terrain; the campaign funds the 68,978 UAH modernization kit required for that integration;
 - CTAs: “Обрати деталь”, “Підтримати збір”;
 - supporting brand principle: “Кожна деталь має значення”.
@@ -271,7 +272,7 @@ The pixel scene is a deliberate part of the project identity. It shows a heavy d
 Rules:
 
 - decorative sprites must keep empty `alt` attributes;
-- the scene meaning is exposed through the section-level `role="img"` and `aria-label`;
+- the scene section has a visually hidden H2, while the scene wrapper exposes the decorative narrative through `role="img"` and `aria-label`;
 - individual decorative sprites must not become focusable;
 - `prefers-reduced-motion: reduce` must effectively disable animations and transitions;
 - do not replace the pixel-art drone with SVG without an explicit request;
@@ -335,28 +336,24 @@ Preserve:
 
 ## 15. SEO
 
-The primary search query is **“модернізація важкого дрона Starlink для 65 ОМБр”**.
+The primary search query is **“допомога ЗСУ”**. Secondary queries are **“65 ОМБр”**, **“задонатити на ЗСУ”**, and **“модернізація важкого дрона”**. Use the correct visible spelling “65 ОМБр”; do not stuff the compact variant “65омбр” into copy.
 
 Already implemented:
 
-- the query appears at the beginning of the title;
-- one H1 clearly describes the campaign;
-- the meta description explains the goal, kit, and monobank action;
+- the title combines “допомога ЗСУ” and “65 ОМБр”;
+- one H1 combines “допомога ЗСУ” with the SKORN / 65 OMBr beneficiary;
+- the meta description includes the three main search intents and describes the goal as heavy-drone modernization without adding Starlink to the search snippet;
 - Open Graph and Twitter metadata use Ukrainian copy;
+- the homepage has an absolute self-referencing canonical, `og:url`, and a 1200×630 social card;
 - FAQPage JSON-LD mirrors the five visible Q&A items;
+- WebSite JSON-LD names the project and canonical URL;
 - donation and thank-you pages use `noindex,follow`;
 - primary CTAs are real links rather than JavaScript-only buttons;
 - meaningful images have dimensions, alt text, lazy loading, and asynchronous decoding where appropriate.
 
 If visible FAQ content changes, update JSON-LD in the same change. Structured data must never contain hidden claims or facts that are absent from the visible page.
 
-Remaining SEO tasks:
-
-- reconfirm the final public URL;
-- add absolute `canonical`, `og:url`, and `og:image` values;
-- complete sitemap and crawler-directive work if needed;
-- validate JSON-LD with an external Rich Results Test after publication;
-- test every published asset and page path for 404 responses.
+The repository includes `robots.txt` and `sitemap.xml`, with only the canonical homepage in the sitemap. Remaining SEO work is operational: validate the published structured data, submit the sitemap and inspect the canonical homepage in Google Search Console, obtain a crawlable link from an official brigade or unit resource, and monitor Core Web Vitals after deployment.
 
 The site was previously available at `https://lov3catch.github.io/65ombr.donate/`, but verify that URL before using it in canonical or Open Graph tags.
 
@@ -395,7 +392,7 @@ The workflow:
 
 1. checks out the repository;
 2. validates campaign repository variables;
-3. copies the static site into the Pages artifact;
+3. copies the static site into the Pages artifact while excluding `AGENTS.md` and `assets/source/`;
 4. generates the runtime campaign-progress configuration in that artifact;
 5. uploads the Pages artifact;
 6. deploys GitHub Pages.
@@ -465,7 +462,9 @@ Do not consider browser verification complete merely because files parse success
 These are roadmap items, not current production facts. Do not change the canonical item list, the 68,978 UAH goal, or the existing video until the corresponding TODO is explicitly implemented and verified.
 
 - an official monobank iframe is not configured and `widgetUrlTemplate` is empty;
-- canonical, `og:url`, `og:image`, sitemap, and crawler-directive work requires confirmation of the final public URL;
+- Google Search Console ownership, sitemap submission, URL Inspection, and indexing requests still require the site owner's authenticated account;
+- an official crawlable backlink from a brigade or unit resource remains an external coordination task;
+- Core Web Vitals must be checked after deployment and after field data accumulates;
 - no named organizer contact exists beyond the brigade's official social links; do not invent one;
 - the interface does not display the date of the latest progress update;
 - there is no backend, automatic Jar synchronization, broader custom analytics event taxonomy beyond `monobank_click`, Consent Mode implementation, or payment confirmation;

@@ -55,6 +55,8 @@ jobs:
             --exclude='.git/' \
             --exclude='.github/' \
             --exclude='_site/' \
+            --exclude='AGENTS.md' \
+            --exclude='assets/source/' \
             ./ _site/
 
           {

@@ -531,7 +531,31 @@ input {
   justify-content: space-between;
 }
 
-.campaign-hero h1,
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.campaign-hero h1 {
+  max-width: 760px;
+  margin: 0;
+  overflow-wrap: anywhere;
+  color: var(--accent);
+  font-family: "Cascadia Mono", "Segoe UI Mono", Consolas, monospace;
+  font-size: clamp(15px, 1.8vw, 22px);
+  line-height: 1.28;
+  letter-spacing: 0.045em;
+  text-transform: uppercase;
+}
+
+.campaign-hero-slogan,
 .section-heading h2 {
   margin: 0;
   font-family: "Arial Black", Impact, sans-serif;
@@ -539,6 +563,11 @@ input {
   line-height: 0.97;
   letter-spacing: -0.045em;
   text-transform: uppercase;
+}
+
+.campaign-hero-slogan {
+  margin-top: 10px;
+  color: var(--text);
 }
 
 .intro {
@@ -2054,9 +2083,22 @@ input {
     white-space: normal;
   }
 
-  .campaign-hero h1 {
+  .campaign-hero-copy {
+    width: calc(100vw - 32px);
+    max-width: 100%;
+  }
+
+  .campaign-hero-slogan {
     overflow-wrap: break-word;
     font-size: clamp(25px, 8vw, 34px);
+  }
+
+  .campaign-hero h1 {
+    width: 100%;
+    max-width: 100%;
+    font-size: 13px;
+    line-height: 1.35;
+    white-space: normal;
   }
 
   .campaign-hero-intro {
@@ -2323,9 +2365,10 @@ input {
     height: 158px;
   }
 
-  .campaign-hero h1 {
-    font-size: clamp(28px, 9.2vw, 38px);
-    line-height: 0.94;
+  .campaign-hero-slogan {
+    font-size: clamp(24px, 7.6vw, 31px);
+    line-height: 0.98;
+    letter-spacing: -0.055em;
     overflow-wrap: anywhere;
   }
 
@@ -2559,8 +2602,8 @@ input {
     padding-inline: 12px;
   }
 
-  .campaign-hero h1 {
-    font-size: clamp(27px, 9.4vw, 34px);
+  .campaign-hero-slogan {
+    font-size: clamp(25px, 8.4vw, 30px);
   }
 
   .campaign-hero-actions {
