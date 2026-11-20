@@ -320,13 +320,34 @@ h1 {
   text-align: center;
 }
 
-.thanks-emblem {
-  display: block;
-  width: clamp(150px, 34vw, 230px);
-  height: auto;
+.thanks-emblems {
+  --emblem-size: clamp(140px, 34vw, 248.4px);
+  position: relative;
+  width: calc(var(--emblem-size) * 1.4);
+  height: calc(var(--emblem-size) * 1.1);
   margin: 28px auto 24px;
+}
+
+.thanks-emblem {
+  position: absolute;
+  width: var(--emblem-size);
+  height: var(--emblem-size);
+  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.34));
   image-rendering: pixelated;
-  filter: drop-shadow(8px 10px 0 rgba(0, 0, 0, 0.32));
+  object-fit: contain;
+}
+
+.thanks-emblem-brigade {
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.thanks-emblem-unit {
+  top: 0;
+  left: 0;
+  z-index: 2;
+  filter: drop-shadow(0 7px 6px rgba(0, 0, 0, 0.58));
 }
 
 .thanks-copy {
@@ -474,10 +495,6 @@ h1 {
 
   .post-donation-actions {
     margin-top: 24px;
-  }
-
-  .thanks-emblem {
-    width: min(58vw, 190px);
   }
 
   .thanks-copy {
