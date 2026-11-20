@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://donate.65ombr.online/sitemap.xml
