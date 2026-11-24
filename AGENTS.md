@@ -34,7 +34,7 @@ Do not make any of the following changes without an explicit user request:
 - imply that opening the Jar or the thank-you page confirms payment;
 - describe a researched or proposed external feature as implemented.
 
-All user-facing copy must be natural Ukrainian. Technical documentation and code comments may be English, but the visible interface must remain Ukrainian.
+All user-facing copy and developer-facing documentation must be natural Ukrainian, except AGENTS.md, which must remain in English. Use Ukrainian for new commit messages and pull request titles and descriptions. Preserve code identifiers, filenames, product names, and exact technical syntax; code comments may remain English.
 
 Save every newly generated image and any source/intermediate version that must be retained under `assets/`. Production pages must reference only final, optimized assets. Do not leave important project assets only in temporary directories.
 

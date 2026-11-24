@@ -1,13 +1,13 @@
-# Part 18: Zaslip shield
+# Деталь 18: щит Zaslip
 
-- Use case: stylized component-card asset
-- Final size: 128x128 px
-- Final filename: `part-18-zaslip-shield.png`
-- Chroma key: `#00ff00`
-- Palette: project dark tactical colors with amber accents
-- Color limit: 24
-- Fit: contain, centered
+- Призначення: стилізоване зображення для картки деталі
+- Кінцевий розмір: 128×128 px
+- Назва кінцевого файлу: `part-18-zaslip-shield.png`
+- Колір хромакею: `#00ff00`
+- Палітра: темні тактичні кольори проєкту з бурштиновими акцентами
+- Обмеження палітри: 24 кольори
+- Розміщення: повністю в межах полотна, по центру
 
-## Generation prompt
+## Запит для генерації
 
-Create exactly one compact protective shield object. The concept name is Zaslip, but the image must contain no text or letters. Use a rugged futuristic ballistic-shield silhouette, dark graphite metal, an amber-gold reinforced rim, small amber technical accents, and subtle blue-gray highlights. Match the project's dark tactical industrial pixel-art asset set. Use an isometric three-quarter view, simplified forms, broad color areas, crisp edges, and a readable silhouette. Center the complete shield with generous padding on a perfectly flat solid `#00ff00` background. Do not use green in the object. Avoid people, weapons, extra props, shadows, reflections, logos, watermarks, UI, frames, and background texture.
+Створи рівно один компактний захисний щит. Назва концепції — Zaslip, але на зображенні не повинно бути тексту чи літер. Використай міцний футуристичний силует балістичного щита, темний графітовий метал, посилений бурштиново-золотий обідок, невеликі бурштинові технічні акценти та стримані сіро-сині відблиски. Узгодь зображення з темною тактичною індустріальною серією піксель-арту проєкту. Ізометричний ракурс у три чверті, спрощені форми, великі кольорові площини, чіткі краї та впізнаваний силует. Розмісти весь щит по центру з достатніми полями на ідеально рівному суцільному тлі `#00ff00`. Не використовуй зелений колір у самому предметі. Уникай людей, зброї, додаткових предметів, тіней, віддзеркалень, логотипів, водяних знаків, інтерфейсу, рамок і текстури тла.
