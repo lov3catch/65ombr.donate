@@ -43,6 +43,9 @@ Save every newly generated image and any source/intermediate version that must b
 This repository is the complete production source. Its primary files are:
 
 - `AGENTS.md` — project requirements, decisions, constraints, and handoff context;
+- `docs/` — dated SEO audits and task checklist; historical live-site and PR statuses require fresh verification; excluded from the public Pages artifact;
+- `design-playbook.md` — design guidance and links to current visual references;
+- `design-examples/` — offline component, banner, pixel-art, and motion examples; stored in the repository and excluded from the public Pages artifact;
 - `index.html` — the main campaign landing page;
 - `styles.css` — the main visual system, animations, and responsive behavior;
 - `app.js` — item data, selector logic, campaign progress rendering, and donation handoff;
@@ -392,7 +395,7 @@ The workflow:
 
 1. checks out the repository;
 2. validates campaign repository variables;
-3. copies the static site into the Pages artifact while excluding `AGENTS.md` and `assets/source/`;
+3. copies the static site into the Pages artifact while excluding `AGENTS.md`, `design-playbook.md`, `design-examples/`, `docs/`, and `assets/source/`;
 4. generates the runtime campaign-progress configuration in that artifact;
 5. uploads the Pages artifact;
 6. deploys GitHub Pages.
