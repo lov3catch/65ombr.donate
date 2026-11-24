@@ -34,7 +34,7 @@ Do not make any of the following changes without an explicit user request:
 - imply that opening the Jar or the thank-you page confirms payment;
 - describe a researched or proposed external feature as implemented.
 
-All user-facing copy must be natural Ukrainian. Technical documentation and code comments may be English, but the visible interface must remain Ukrainian.
+All user-facing copy and developer-facing documentation must be natural Ukrainian, except AGENTS.md, which must remain in English. Use Ukrainian for new commit messages and pull request titles and descriptions. Preserve code identifiers, filenames, product names, and exact technical syntax; code comments may remain English.
 
 Save every newly generated image and any source/intermediate version that must be retained under `assets/`. Production pages must reference only final, optimized assets. Do not leave important project assets only in temporary directories.
 
@@ -43,6 +43,9 @@ Save every newly generated image and any source/intermediate version that must b
 This repository is the complete production source. Its primary files are:
 
 - `AGENTS.md` — project requirements, decisions, constraints, and handoff context;
+- `docs/` — dated SEO audits and task checklist; historical live-site and PR statuses require fresh verification; excluded from the public Pages artifact;
+- `design-playbook.md` — design guidance and links to current visual references;
+- `design-examples/` — offline component, banner, pixel-art, and motion examples; stored in the repository and excluded from the public Pages artifact;
 - `index.html` — the main campaign landing page;
 - `styles.css` — the main visual system, animations, and responsive behavior;
 - `app.js` — item data, selector logic, campaign progress rendering, and donation handoff;
@@ -392,7 +395,7 @@ The workflow:
 
 1. checks out the repository;
 2. validates campaign repository variables;
-3. copies the static site into the Pages artifact while excluding `AGENTS.md` and `assets/source/`;
+3. copies the static site into the Pages artifact while excluding `AGENTS.md`, `design-playbook.md`, `design-examples/`, `docs/`, and `assets/source/`;
 4. generates the runtime campaign-progress configuration in that artifact;
 5. uploads the Pages artifact;
 6. deploys GitHub Pages.

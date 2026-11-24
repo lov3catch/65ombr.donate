@@ -55,6 +55,9 @@ jobs:
             --exclude='.git/' \
             --exclude='.github/' \
             --exclude='_site/' \
+            --exclude='design-playbook.md' \
+            --exclude='docs/' \
+            --exclude='design-examples/' \
             --exclude='AGENTS.md' \
             --exclude='assets/source/' \
             ./ _site/
